@@ -69,7 +69,7 @@ Toybox includes a command line interface. To access Toybox on the command line, 
 php toybox
 ```
 
-### Make block
+### Make Block
 You can create a block with the `make:block` command.
 ```bash
 php toybox make:block "My Block" --with-styles --with-js
