@@ -1,0 +1,14 @@
+// Editor-only styles go in here
+@import "variables";
+@import "mixins";
+@import "fonts";
+@import "~normalize.css/normalize.css";
+
+.wp-block {
+    max-width: 100%;
+}
+
+.block-editor-block-list__block {
+    margin-bottom: 0;
+    margin-top: 0;
+}

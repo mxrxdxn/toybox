@@ -1,0 +1,40 @@
+@use "sass:map";
+@use "sass:math";
+
+@import "~flexya/src/variables";
+@import "~flexya/src/functions";
+@import "~flexya/src/mixins";
+
+// Alias for rem()
+@function remify($size) {
+    @return rem($size);
+}
+
+// Alias for rem()
+@function calculateRem($size) {
+    @return rem($size);
+}
+
+// Converts px values to rem
+@function rem($size) {
+    $remSize: math.div($size, 16px);
+    @return #{$remSize}rem;
+}
+
+// Fetch a color from a given map
+@function color($colorName, $map: $colors) {
+    @return map.get($map, $colorName);
+}
+
+// Set the font properties - family, size, line height and weight
+@mixin fontPx($family: $defaultFontStack, $size: 16px, $lineHeight: 24px, $weight: 400) {
+    line-height: rem($lineHeight);
+
+    font: {
+        family: $family;
+        size: rem($size);
+        weight: $weight;
+    }
+}
+
+// Custom mixins can be added below here.

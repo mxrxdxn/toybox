@@ -1,0 +1,12 @@
+# Node/Composer dependencies aren't needed
+node_modules
+vendor
+
+# Don't include map files
+*.css.map
+*.js.map
+
+# Block IDE files
+.idea
+.code
+.nova

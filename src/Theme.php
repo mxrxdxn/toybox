@@ -1,0 +1,177 @@
+<?php
+
+namespace Maxweb\Toybox;
+
+use Exception;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
+
+class Theme
+{
+    /**
+     * The theme version.
+     */
+    const VERSION = "1.0.0";
+
+    /**
+     * Boots the theme.
+     *
+     * @return void
+     * @throws Exception
+     */
+    public static function boot(): void
+    {
+        // Theme setup
+        self::setup();
+
+        // Enqueue styles and scripts
+        self::scripts();
+
+        // Register blocks
+        self::registerBlocks();
+
+        // Register options page
+        self::registerOptionsPage();
+    }
+
+    /**
+     * Runs actions in the "after_setup_theme" hook.
+     *
+     * @return void
+     * @throws Exception
+     */
+    private static function setup(): void
+    {
+        add_action("after_setup_theme", function () {
+            error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
+
+            // Register the error handler
+            if (defined("WP_DEBUG")) {
+                $whoops = new Run();
+                $whoops->pushHandler(new PrettyPageHandler());
+                $whoops->register();
+            }
+
+            // Add default posts and comments RSS feed links to <head>.
+            add_theme_support('automatic-feed-links');
+
+            // Enable support for post thumbnails and featured images.
+            add_theme_support('post-thumbnails');
+
+            add_theme_support('editor-styles');
+            add_editor_style('css/editor.css');
+
+            add_theme_support('wp-block-styles');
+
+            add_theme_support('responsive-embeds');
+
+            // Title tag support
+            add_theme_support('title-tag');
+
+            // HTML5 support
+            add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script']);
+
+            // Register menus
+            register_nav_menus([
+                'header_nav' => __("Header Navigation", "toybox"),
+                'footer_nav' => __("Footer Navigation", "toybox"),
+            ]);
+
+            // Disable the admin bar
+            add_filter('show_admin_bar', '__return_false');
+        });
+
+        // Enqueue the editor.js file when we're in the block editor.
+        add_action('enqueue_block_editor_assets', function () {
+            wp_enqueue_script('editor-js', mix('/js/editor.js'), [], '1.0.0', 'true');
+        });
+
+        // Tweak ACF WYSIWYG
+        add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
+            // Edit the "Full" toolbar and add 'fontsizeselect' if not already present.
+            if (($key = array_search('fontsizeselect', $toolbars['Full'][2])) !== true) {
+                array_push($toolbars['Full'][2], 'fontsizeselect');
+            }
+
+            return $toolbars;
+        });
+    }
+
+    /**
+     * Enqueues any styles or scripts required by the theme.
+     *
+     * @return void
+     * @throws Exception
+     */
+    private static function scripts(): void
+    {
+        add_action("wp_enqueue_scripts", function () {
+            wp_enqueue_style('critical', mix('/css/critical.css'));
+        });
+    }
+
+    /**
+     * Autoload blocks from the /blocks directory.
+     *
+     * @return void
+     */
+    private static function registerBlocks(): void
+    {
+        if (function_exists('acf_register_block_type')) {
+            $path = get_theme_file_path() . "/blocks";
+
+            if (file_exists($path)) {
+                foreach (glob("{$path}/*") as $blockDir) {
+                    // Load the block
+                    add_action("init", function () use ($blockDir) {
+                        require_once("{$blockDir}/init.php");
+                    });
+
+                    // Also load the ACF JSON
+                    add_filter('acf/settings/load_json', function ($paths) use ($blockDir) {
+                        // Add the path
+                        $paths[] = "{$blockDir}/acf-json";
+
+                        return $paths;
+                    });
+                }
+            }
+        }
+    }
+
+    /**
+     * Registers the theme's option pages using ACF. These pages can then be populated via ACF.
+     * If ACF is not installed, nothing will fire.
+     *
+     * @return void
+     */
+    private static function registerOptionsPage(): void
+    {
+        if (function_exists('acf_add_options_page')) {
+            // Main Settings Page
+            acf_add_options_page([
+                'page_title' 	=> 'Theme General Settings',
+                'menu_title'	=> 'Theme Settings',
+                'menu_slug' 	=> 'theme-general-settings',
+                'capability'	=> 'edit_posts',
+                'redirect'		=> false
+            ]);
+        }
+
+        if (function_exists('acf_add_options_sub_page')) {
+            // Contact Information
+            acf_add_options_sub_page([
+                'page_title' 	=> 'Contact Information',
+                'menu_title'	=> 'Contact',
+                'parent_slug'	=> 'theme-general-settings',
+            ]);
+
+            // Social Media
+            acf_add_options_sub_page([
+                'page_title' 	=> 'Social Media',
+                'menu_title'	=> 'Social Media',
+                'parent_slug'	=> 'theme-general-settings',
+            ]);
+        }
+    }
+}

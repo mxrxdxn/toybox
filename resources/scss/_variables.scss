@@ -1,0 +1,23 @@
+@use "sass:map";
+
+// Breakpoints
+$breakpoints: (
+    "mobile":        ("min-width": 0,      "prefix": false),
+    "tablet":        ("min-width": 768px,  "prefix": "t"),
+    "laptop":        ("min-width": 1200px, "prefix": "l"),
+    "desktop":       ("min-width": 1400px, "prefix": "d"),
+    "large-desktop": ("min-width": 1920px, "prefix": "ld")
+);
+
+// Set theme colours
+$colors: (
+    // Add your colours here
+    "brand-white": #fff,
+    "brand-black": #000,
+);
+
+// Fallback font stack
+$fallbackFontStack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+// Set font stacks
+$defaultFontStack: "Poppins", $fallbackFontStack;
