@@ -4,19 +4,7 @@
 @import "fonts";
 @import "~normalize.css/normalize.css";
 @import "~flexya/src/flexya";
-
-body, html {
-    overflow-x: hidden;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-img {
-    max-width: 100%;
-}
-
+@import "globals";
 
 // Add your partials below here
 @import "partials/header";

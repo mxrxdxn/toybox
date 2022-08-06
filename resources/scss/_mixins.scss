@@ -22,8 +22,9 @@
 }
 
 // Fetch a color from a given map
-@function color($colorName, $map: $colors) {
-    @return map.get($map, $colorName);
+@function color($colorName, $map: "additional") {
+    $innerMap: map.get($colorMap, $map);
+    @return map.get($innerMap, $colorName);
 }
 
 // Set the font properties - family, size, line height and weight

@@ -2,18 +2,28 @@
 
 // Breakpoints
 $breakpoints: (
-    "mobile":        ("min-width": 0,      "prefix": false),
-    "tablet":        ("min-width": 768px,  "prefix": "t"),
-    "laptop":        ("min-width": 1200px, "prefix": "l"),
-    "desktop":       ("min-width": 1400px, "prefix": "d"),
-    "large-desktop": ("min-width": 1920px, "prefix": "ld")
+    "mobile":           ("min-width": 0,      "prefix": false),
+    "large-mobile":     ("min-width": 576px,  "prefix": "lm"),
+    "tablet":           ("min-width": 768px,  "prefix": "t"),
+    "landscape-tablet": ("min-width": 992px,  "prefix": "lt"),
+    "desktop":          ("min-width": 1200px, "prefix": "d"),
+    "large-desktop":    ("min-width": 1400px, "prefix": "ld")
 );
 
+// Column Gutters
+$enableGutters: true;
+
 // Set theme colours
-$colors: (
-    // Add your colours here
-    "brand-white": #fff,
-    "brand-black": #000,
+$colorMap: (
+    "brand": (
+        // Brand-specific colours
+    ),
+
+    "additional": (
+        // Add your colours here
+        "white": #fff,
+        "black": #000,
+    )
 );
 
 // Fallback font stack
