@@ -197,10 +197,6 @@ class Theme
     public static function setMenus(array $menus = []): void
     {
         // Register menus
-        register_nav_menus([
-            'header_nav' => __("Header Navigation", "toybox"),
-            'footer_nav' => __("Footer Navigation", "toybox"),
-        ]);
         add_action("after_setup_theme", function () use ($menus) {
             // Register menus
             register_nav_menus($menus);
