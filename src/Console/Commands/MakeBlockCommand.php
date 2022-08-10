@@ -63,25 +63,35 @@ class MakeBlockCommand extends Command
 
         // Create resources folder
         if ($withStyles || $withJS) {
+            // Create the resources directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources");
+
             $output->writeln("<info>Created resources directory: ./blocks/{$sluggedName}/resources</info>");
         }
 
         // Create Styles
         if ($withStyles) {
+            // Create the SCSS directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/scss");
 
+            // Create the main SCSS file
             $scssFile = file_get_contents(TOYBOX_DIR . "/src/stubs/example-block/resources/scss/example-block.scss");
             $scssFile = str_replace('.block-example', ".block-{$sluggedName}", $scssFile);
             file_put_contents(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/scss/{$sluggedName}.scss", $scssFile);
+
+            // Create the variables file
+            $variablesFile = file_get_contents(TOYBOX_DIR . "/src/stubs/example-block/resources/scss/_variables.scss");
+            file_put_contents(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/scss/_variables.scss", $variablesFile);
 
             $output->writeln("<info>Created SCSS stylesheet: ./blocks/{$sluggedName}/resources/scss/{$sluggedName}.scss</info>");
         }
 
         // Create JS
         if ($withJS) {
+            // Create the JS directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/js");
 
+            // Create the main JS file
             $jsFile = file_get_contents(TOYBOX_DIR . "/src/stubs/example-block/resources/js/example-block.js");
             file_put_contents(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/js/{$sluggedName}.js", $jsFile);
 
