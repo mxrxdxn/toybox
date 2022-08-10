@@ -45,8 +45,9 @@ class Theme
         add_action("after_setup_theme", function () {
             error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
 
-            // Register the error handler
-            if (defined("WP_DEBUG")) {
+            // Register the error handler, but only if we're in a debug environment.
+            // Otherwise there could be information disclosure.
+            if (defined("WP_DEBUG") && WP_DEBUG === true) {
                 $whoops = new Run();
                 $whoops->pushHandler(new PrettyPageHandler());
                 $whoops->register();
@@ -70,12 +71,6 @@ class Theme
 
             // HTML5 support
             add_theme_support('html5', ['comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script']);
-
-            // Register menus
-            register_nav_menus([
-                'header_nav' => __("Header Navigation", "toybox"),
-                'footer_nav' => __("Footer Navigation", "toybox"),
-            ]);
 
             // Disable the admin bar
             add_filter('show_admin_bar', '__return_false');
@@ -173,5 +168,36 @@ class Theme
                 'parent_slug'	=> 'theme-general-settings',
             ]);
         }
+    }
+
+    /**
+     * Registers menu locations and names in WordPress.
+     *
+     * Uses the same syntax as the native `register_nav_menus` function:
+     *
+     * ```
+     * [
+     *     'menu_location' => __("Menu Name", "text-domain")
+     * ]
+     * ```
+     *
+     * Text domain isn't required - in fact, you can completely omit the __()
+     * call and just pass in a string if you want.
+     *
+     * @param array $menus
+     *
+     * @return void
+     */
+    public static function setMenus(array $menus = []): void
+    {
+        // Register menus
+        register_nav_menus([
+            'header_nav' => __("Header Navigation", "toybox"),
+            'footer_nav' => __("Footer Navigation", "toybox"),
+        ]);
+        add_action("after_setup_theme", function () use ($menus) {
+            // Register menus
+            register_nav_menus($menus);
+        });
     }
 }

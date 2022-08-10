@@ -11,6 +11,7 @@ use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\ChoiceQuestion;
 
 class ExportBlockCommand extends Command
 {
@@ -39,7 +40,8 @@ class ExportBlockCommand extends Command
         $name = $input->getArgument("name");
 
         // Options
-        $domain = $input->getOption("domain");
+        $domain     = $input->getOption("domain");
+        $fieldGroup = $input->getOption("fieldgroup");
 
         // Connect to WordPress
         Kernel::connectToWordpress($domain);
@@ -51,10 +53,29 @@ class ExportBlockCommand extends Command
             return self::INVALID;
         }
 
+        // If the name of the field group isn't passed in, ask for it.
+        if (empty($fieldGroup)) {
+            // Get all field groups
+            $groups = [];
+            foreach (acf_get_field_groups() as $fieldGroup) {
+                $groups[] = $fieldGroup['title'];
+            }
+
+            // Prompt for the field group
+            $helper   = $this->getHelper('question');
+            $question = new ChoiceQuestion(
+                'Please select a field group to export',
+                $groups
+            );
+
+            $question->setErrorMessage('Field group %s is invalid.');
+
+            $fieldGroup = $helper->ask($input, $output, $question);
+        }
+
         // Grab the field group, or error if it doesn't exist
-        if (! $fieldGroup = $this->getFieldGroup($name)) {
-            $output->writeln("<error>Could not locate field group for the block.</error>");
-            $output->writeln("<error>Is your naming convention correct? Field group should be titled \"Block: {$name}\".</error>");
+        if (! $fieldGroup = $this->getFieldGroup($fieldGroup)) {
+            $output->writeln("<error>Could not locate field group.</error>");
             return self::FAILURE;
         }
 
@@ -105,6 +126,13 @@ class ExportBlockCommand extends Command
             null,
             InputOption::VALUE_REQUIRED,
             "The domain to export from."
+        );
+
+        $this->addOption(
+            "fieldgroup",
+            "g",
+            InputOption::VALUE_OPTIONAL,
+            "The name of the field group."
         );
     }
 
