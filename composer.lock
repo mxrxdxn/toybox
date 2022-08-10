@@ -323,12 +323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "2da480d7a33c382c650a8ac6f6da94bd1f4d5793"
+                "reference": "b4dff559abe91401289757f479f6f840b8846da7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/2da480d7a33c382c650a8ac6f6da94bd1f4d5793",
-                "reference": "2da480d7a33c382c650a8ac6f6da94bd1f4d5793",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b4dff559abe91401289757f479f6f840b8846da7",
+                "reference": "b4dff559abe91401289757f479f6f840b8846da7",
                 "shasum": ""
             },
             "require": {
@@ -409,7 +409,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-05T22:36:05+00:00"
+            "time": "2022-08-09T15:04:36+00:00"
         },
         {
             "name": "spatie/backtrace",
@@ -529,12 +529,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "f92c0207e5541254f473efe29769ebe1e1459f3b"
+                "reference": "c21b341c51e00c7ac67a6763620a5cc49ce5de9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/f92c0207e5541254f473efe29769ebe1e1459f3b",
-                "reference": "f92c0207e5541254f473efe29769ebe1e1459f3b",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/c21b341c51e00c7ac67a6763620a5cc49ce5de9f",
+                "reference": "c21b341c51e00c7ac67a6763620a5cc49ce5de9f",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +597,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-07-29T09:56:32+00:00"
+            "time": "2022-08-10T16:52:15+00:00"
         },
         {
             "name": "symfony/console",
