@@ -43,11 +43,14 @@ class Theme
     private static function setup(): void
     {
         add_action("after_setup_theme", function () {
-            error_reporting(E_ALL & ~E_WARNING & ~E_NOTICE);
-
             // Register the error handler, but only if we're in a debug environment.
-            // Otherwise there could be information disclosure.
+            // Otherwise, there could be information disclosure.
             if (defined("WP_DEBUG") && WP_DEBUG === true) {
+                // Sets the error reporting level - while we're in debug mode
+                // we should really show all errors, even if they're just
+                // warnings or notices.
+                error_reporting(E_ALL);
+
                 $whoops = new Run();
                 $whoops->pushHandler(new PrettyPageHandler());
                 $whoops->register();
@@ -59,11 +62,14 @@ class Theme
             // Enable support for post thumbnails and featured images.
             add_theme_support('post-thumbnails');
 
+            // Add the editor stylesheet (includes some core Gutenberg fixes)
             add_theme_support('editor-styles');
             add_editor_style('css/editor.css');
 
+            // Add support for block styles
             add_theme_support('wp-block-styles');
 
+            // Add support for responsive embeds
             add_theme_support('responsive-embeds');
 
             // Title tag support
