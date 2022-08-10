@@ -86,12 +86,12 @@ This will create your block under the `/blocks` directory.
 ### Export Block
 The `export:block` command exports any ACF field groups associated with a given block into the block's own `acf-json` folder. You must run this command if you are making the block redistributable.
 
-Note that you should follow the naming convention for your block's ACF field group. If your block is named "Booking Form", your field group should be named "Block: Booking Form".
 ```bash
 php toybox export:block "My Block"
 ```
 
-| Argument/Option     | Example    | Required                             | Description                                                                                                                                    |
-|---------------------|------------|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| Block Name          | "My Block" | Yes                                  | The name of the block to export settings for.                                                                                                  |
-| --domain=mysite.com | mysite.com | No (Yes when on multisite WordPress) | When using Toybox on a WordPress multisite, you must tell WordPress which domain you are using so that it can connect to the correct database. |
+| Argument/Option                       | Example             | Required                                         | Description                                                                                                                                    |
+|---------------------------------------|---------------------|--------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| Block Name                            | "My Block"          | Yes                                              | The name of the block to export settings for.                                                                                                  |
+| --domain=mysite.com                   | mysite.com          | No (Yes when on multisite WordPress)             | When using Toybox on a WordPress multisite, you must tell WordPress which domain you are using so that it can connect to the correct database. |
+| --fieldgroup / -g "Field Group Name"  | "My Block Settings" | No (prompts for the field group if not provided) | The name of the field group to export.                                                                                                         |
