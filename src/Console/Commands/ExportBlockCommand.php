@@ -42,6 +42,7 @@ class ExportBlockCommand extends Command
         // Options
         $domain     = $input->getOption("domain");
         $fieldGroup = $input->getOption("fieldgroup");
+        $location   = $input->getOption("location");
 
         // Connect to WordPress
         Kernel::connectToWordpress($domain);
@@ -53,48 +54,74 @@ class ExportBlockCommand extends Command
             return self::INVALID;
         }
 
-        // If the name of the field group isn't passed in, ask for it.
-        if (empty($fieldGroup)) {
-            // Get all field groups
-            $groups = [];
-            foreach (acf_get_field_groups() as $fieldGroup) {
-                $groups[] = $fieldGroup['title'];
-            }
-
-            // Prompt for the field group
-            $helper   = $this->getHelper('question');
-            $question = new ChoiceQuestion(
-                'Please select a field group to export',
-                $groups
-            );
-
-            $question->setErrorMessage('Field group %s is invalid.');
-
-            $fieldGroup = $helper->ask($input, $output, $question);
-        }
-
-        // Grab the field group, or error if it doesn't exist
-        if (! $fieldGroup = $this->getFieldGroup($fieldGroup)) {
-            $output->writeln("<error>Could not locate field group.</error>");
-            return self::FAILURE;
-        }
-
         // Set ACF write path - we need to do this here so the block exports to the correct directory
         add_filter('acf/settings/save_json', function ($path) use ($name) {
             return get_stylesheet_directory() . '/blocks/' . slugify($name) . '/acf-json';
         });
 
-        // Create the directory (if necessary)
-        if (! $this->acfPathExists($name)) {
-            $this->createAcfPath($name);
+        // Search by location
+        if ($location !== false) {
+            // Fetch all field groups for the block
+            $fieldGroups = acf_get_field_groups(['block' => 'acf/' . slugify($name)]);
+            $totalGroups = count($fieldGroups);
+            $groupLabel  = $totalGroups === 1 ? "group" : "groups";
+
+            $output->writeln("<info>Found {$totalGroups} field {$groupLabel} for block \"{$name}\"</info>");
+
+            // Create the directory (if necessary)
+            if (! $this->acfPathExists($name)) {
+                $this->createAcfPath($name);
+            }
+
+            $output->writeln("<info>Exporting field {$groupLabel} for \"{$name}\"..</info>");
+
+            // Loop all the field groups and export the settings for each
+            foreach ($fieldGroups as $fieldGroup) {
+                $fieldGroup['fields'] = acf_get_fields($fieldGroup['ID']);
+                unset($fieldGroup['local_file']);
+
+                $output->writeln("<info>Exporting field group \"{$fieldGroup['title']}\"..</info>");
+
+                // Write the file
+                acf_write_json_field_group($fieldGroup);
+            }
+        } else {
+            // If the name of the field group isn't passed in, ask for it.
+            if (empty($fieldGroup)) {
+                // Get all field groups
+                $groups = [];
+                foreach (acf_get_field_groups() as $fieldGroup) {
+                    $groups[] = $fieldGroup['title'];
+                }
+
+                // Prompt for the field group
+                $helper   = $this->getHelper('question');
+                $question = new ChoiceQuestion(
+                    'Please select a field group to export',
+                    $groups
+                );
+
+                $question->setErrorMessage('Field group %s is invalid.');
+
+                $fieldGroup = $helper->ask($input, $output, $question);
+            }
+
+            // Grab the field group, or error if it doesn't exist
+            if (! $fieldGroup = $this->getFieldGroup($fieldGroup)) {
+                $output->writeln("<error>Could not locate field group.</error>");
+                return self::FAILURE;
+            }
+
+            // Create the directory (if necessary)
+            if (! $this->acfPathExists($name)) {
+                $this->createAcfPath($name);
+            }
+
+            $output->writeln("<info>Exporting field group \"{$fieldGroup['title']}\"..</info>");
+
+            // Write the file
+            acf_write_json_field_group($fieldGroup);
         }
-
-        // Write the file
-        acf_write_json_field_group($fieldGroup);
-
-        $output->writeln("<info>Exporting block settings for \"{$name}\"..</info>");
-
-
 
         return Command::SUCCESS;
     }
@@ -131,8 +158,15 @@ class ExportBlockCommand extends Command
         $this->addOption(
             "fieldgroup",
             "g",
-            InputOption::VALUE_OPTIONAL,
+            InputOption::VALUE_REQUIRED,
             "The name of the field group."
+        );
+
+        $this->addOption(
+            "location",
+            "l",
+            InputOption::VALUE_NONE,
+            "Export all field groups for this block, based on location."
         );
     }
 
@@ -148,6 +182,7 @@ class ExportBlockCommand extends Command
         foreach (acf_get_field_groups() as $fieldGroup) {
             if ($fieldGroup['title'] === "Block: {$name}" || $fieldGroup['title'] === $name) {
                 $fieldGroup['fields'] = acf_get_fields($fieldGroup['ID']);
+                unset($fieldGroup['local_file']);
 
                 return $fieldGroup;
             }
