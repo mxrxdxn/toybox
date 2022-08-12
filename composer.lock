@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8fc67863dc0095dff1ef73834ce772f4",
+    "content-hash": "e0bef24ae8d13bbaa27092e9c3973a58",
     "packages": [
         {
             "name": "brick/math",
-            "version": "0.10.1",
+            "version": "0.10.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "de846578401f4e58f911b3afeb62ced56365ed87"
+                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/de846578401f4e58f911b3afeb62ced56365ed87",
-                "reference": "de846578401f4e58f911b3afeb62ced56365ed87",
+                "url": "https://api.github.com/repos/brick/math/zipball/459f2781e1a08d52ee56b0b1444086e038561e3f",
+                "reference": "459f2781e1a08d52ee56b0b1444086e038561e3f",
                 "shasum": ""
             },
             "require": {
@@ -52,7 +52,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-                "source": "https://github.com/brick/math/tree/0.10.1"
+                "source": "https://github.com/brick/math/tree/0.10.2"
             },
             "funding": [
                 {
@@ -60,7 +60,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-08-01T22:54:31+00:00"
+            "time": "2022-08-10T22:54:19+00:00"
         },
         {
             "name": "filp/whoops",
@@ -529,12 +529,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "c21b341c51e00c7ac67a6763620a5cc49ce5de9f"
+                "reference": "cdf8ea8dad3ce2d710c6012333c71d79f8dc7129"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/c21b341c51e00c7ac67a6763620a5cc49ce5de9f",
-                "reference": "c21b341c51e00c7ac67a6763620a5cc49ce5de9f",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/cdf8ea8dad3ce2d710c6012333c71d79f8dc7129",
+                "reference": "cdf8ea8dad3ce2d710c6012333c71d79f8dc7129",
                 "shasum": ""
             },
             "require": {
@@ -597,7 +597,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-08-10T16:52:15+00:00"
+            "time": "2022-08-11T14:07:00+00:00"
         },
         {
             "name": "symfony/console",
@@ -1435,7 +1435,9 @@
     },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
+    "platform": {
+        "php": "^8.0"
+    },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }

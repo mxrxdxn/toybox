@@ -17,6 +17,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "php": "^8.0",
         "filp/whoops": "^2.14",
         "symfony/var-dumper": "6.0.x-dev",
         "spatie/ray": "dev-main",
