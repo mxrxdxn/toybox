@@ -39,7 +39,7 @@ class Kernel
     private function bootstrap(): void
     {
         // Create the application
-        $this->application = new Application("Maxweb Toybox", Theme::VERSION);
+        $this->application = new Application("Toybox", Theme::VERSION);
     }
 
     /**
