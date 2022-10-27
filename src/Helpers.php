@@ -3,6 +3,9 @@
 /**
  * The path to the mix-manifest.json file.
  */
+
+use Doctrine\Inflector\InflectorFactory;
+
 const MIX_MANIFEST = __DIR__ . "/../mix-manifest.json";
 
 /**
@@ -68,6 +71,82 @@ function slugify(string $title, string $separator = '-'): string
     $title = preg_replace('![' . preg_quote($separator) . '\s]+!u', $separator, $title);
 
     return trim($title, $separator);
+}
+
+/**
+ * Attempt to match the case on two strings.
+ *
+ * @param string $value
+ * @param string $comparison
+ *
+ * @return string
+ */
+function matchCase(string $value, string $comparison): string
+{
+    $functions = ['mb_strtolower', 'mb_strtoupper', 'ucfirst', 'ucwords'];
+
+    foreach ($functions as $function) {
+        if ($function($comparison) === $comparison) {
+            return $function($value);
+        }
+    }
+
+    return $value;
+}
+
+/**
+ * Get the singular form of an English word.
+ *
+ * @param  string  $value
+ * @return string
+ */
+function singularize(string $value): string
+{
+    $inflector = InflectorFactory::createForLanguage('english')->build();
+    $singular  = $inflector->singularize($value);
+
+    return matchCase($singular, $value);
+}
+
+/**
+ * Get the plural form of an English word.
+ *
+ * @param string              $value
+ * @param Countable|array|int $count
+ *
+ * @return string
+ */
+function pluralize(string $value, Countable|array|int $count = 2): string
+{
+    if (is_countable($count)) {
+        $count = count($count);
+    }
+
+    if ((int) abs($count) === 1 || uncountable($value) || preg_match('/^(.*)[A-Za-z0-9\x{0080}-\x{FFFF}]$/u', $value) == 0) {
+        return $value;
+    }
+
+    $inflector = InflectorFactory::createForLanguage('english')->build();
+    $plural    = $inflector->pluralize($value);
+
+    return matchCase($plural, $value);
+}
+
+/**
+ * Determine if the given value is uncountable.
+ *
+ * @param string $value
+ *
+ * @return bool
+ */
+function uncountable(string $value): bool
+{
+    return in_array(strtolower($value), [
+        'cattle',
+        'kin',
+        'recommended',
+        'related',
+    ]);
 }
 
 if (! function_exists('ray')) {

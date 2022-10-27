@@ -161,7 +161,7 @@ class Theme
                     // Load the post type
                     add_action("init", function () use ($postType) {
                         require_once("{$postType}");
-                    });
+                    }, 0);
                 }
             }
         }

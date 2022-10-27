@@ -22,6 +22,7 @@
         "symfony/var-dumper": "6.0.x-dev",
         "spatie/ray": "dev-main",
         "symfony/console": "6.0.10",
-        "rosell-dk/webp-convert": "dev-master"
+        "rosell-dk/webp-convert": "dev-master",
+        "doctrine/inflector": "2.1.x-dev"
     }
 }
