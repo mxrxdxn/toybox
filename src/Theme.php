@@ -11,7 +11,7 @@ class Theme
     /**
      * The theme version.
      */
-    const VERSION = "1.0.1";
+    const VERSION = "1.1.0";
 
     /**
      * Boots the theme.
@@ -29,6 +29,12 @@ class Theme
 
         // Register blocks
         self::registerBlocks();
+
+        // Register post types
+        self::registerPostTypes();
+
+        // Register shortcodes
+        self::registerShortcodes();
 
         // Register options page
         self::registerOptionsPage();
@@ -141,6 +147,48 @@ class Theme
     }
 
     /**
+     * Autoload custom post types from the /post-types directory.
+     *
+     * @return void
+     */
+    private static function registerPostTypes(): void
+    {
+        if (function_exists('register_post_type')) {
+            $path = get_theme_file_path() . "/post-types";
+
+            if (file_exists($path)) {
+                foreach (glob("{$path}/*.php") as $postType) {
+                    // Load the post type
+                    add_action("init", function () use ($postType) {
+                        require_once("{$postType}");
+                    });
+                }
+            }
+        }
+    }
+
+    /**
+     * Autoload shortcodes from the /shortcodes directory.
+     *
+     * @return void
+     */
+    private static function registerShortcodes(): void
+    {
+        if (function_exists('add_shortcode')) {
+            $path = get_theme_file_path() . "/shortcodes";
+
+            if (file_exists($path)) {
+                foreach (glob("{$path}/*") as $shortcodeDir) {
+                    // Load the shortcode
+                    add_action("init", function () use ($shortcodeDir) {
+                        require_once("{$shortcodeDir}/init.php");
+                    });
+                }
+            }
+        }
+    }
+
+    /**
      * Registers the theme's option pages using ACF. These pages can then be populated via ACF.
      * If ACF is not installed, nothing will fire.
      *
@@ -201,101 +249,5 @@ class Theme
             // Register menus
             register_nav_menus($menus);
         });
-    }
-
-    /**
-     * Registers a custom post type.
-     *
-     *
-     * `$labels` can either be a full array of supported labels, or just an
-     * array containing singular and plural keys.
-     *
-     *
-     * `$args` is the additional data usually passed as the second argument
-     * to `register_post_type()`.
-     *
-     * @param string $name
-     * @param array  $labels
-     * @param array  $args
-     *
-     * @return void
-     */
-    public static function registerPostType(string $name, array $labels, array $args): void
-    {
-        // Register the post type
-        add_action("init", function () use ($name, $labels, $args) {
-            // Check $labels - if there's two keys, and they are "singular" and
-            // "plural", use default label strings. Otherwise, assume we are
-            // overriding the labels entirely.
-            if (self::isSingularAndPluralLabels($labels)) {
-                $singular = ucwords($rawSingular = strtolower($labels['singular']));
-                $plural   = ucwords($rawPlural   = strtolower($labels['plural']));
-
-                $args['labels'] = [
-                    "name"                  => _x($plural, "{$singular} General Name", "toybox"),
-                    "singular_name"         => _x($singular, "{$singular} Singular Name", "toybox"),
-                    "menu_name"             => __($plural, "toybox"),
-                    "name_admin_bar"        => __($singular, "toybox"),
-                    "archives"              => __("{$singular} Archives", "toybox"),
-                    "attributes"            => __("{$singular} Attributes", "toybox"),
-                    'parent_item_colon'     => __("Parent {$singular}:", "toybox"),
-                    "all_items"             => __("All {$plural}", "toybox"),
-                    "add_new_item"          => __("Add New {$singular}", "toybox"),
-                    "add_new"               => __("Add New", "toybox"),
-                    "new_item"              => __("New {$singular}", "toybox"),
-                    "edit_item"             => __("Edit {$singular}", "toybox"),
-                    "update_item"           => __("Update {$singular}", "toybox"),
-                    "view_item"             => __("View {$singular}", "toybox"),
-                    "view_items"            => __("View {$plural}", "toybox"),
-                    "search_items"          => __("Search {$singular}", "toybox"),
-                    "not_found"             => __("Not found", "toybox"),
-                    "not_found_in_trash"    => __("Not found in Trash", "toybox"),
-                    "featured_image"        => __("Featured Image", "toybox"),
-                    "set_featured_image"    => __("Set featured image", "toybox"),
-                    "remove_featured_image" => __("Remove featured image", "toybox"),
-                    "use_featured_image"    => __("Use as featured image", "toybox"),
-                    "insert_into_item"      => __("Insert into {$rawSingular}", "toybox"),
-                    "uploaded_to_this_item" => __("Uploaded to this {$rawSingular}", "toybox"),
-                    "items_list"            => __("{$plural} list", "toybox"),
-                    "items_list_navigation" => __("{$plural} list navigation", "toybox"),
-                    "filter_items_list"     => __("Filter {$rawPlural} list", "toybox"),
-                ];
-            } else {
-                $args['labels'] = $labels;
-            }
-
-            // Set the standard label if not already set
-            if (! array_key_exists('label', $args)) {
-                $args['label'] = __($singular, "toybox");
-            }
-
-            register_post_type($name, $args);
-        });
-    }
-
-    /**
-     * Checks $labels to see if it's just singular and plural labels, or an
-     * entire override.
-     *
-     * @param array $labels
-     *
-     * @return bool
-     */
-    private static function isSingularAndPluralLabels(array $labels): bool
-    {
-        // Must have just two elements
-        if (count($labels) !== 2) {
-            return false;
-        }
-
-        // Get the array keys
-        $keys = array_keys($labels);
-
-        // Make sure "singular" and "plural" are present as keys
-        if (! in_array('singular', $keys) || ! in_array('plural', $keys)) {
-            return false;
-        }
-
-        return true;
     }
 }
