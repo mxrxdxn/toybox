@@ -3,6 +3,6 @@
     </footer>
 
     <?php wp_footer() ?>
-    <script src="<?= mix('/js/app.js') ?>"></script>
+    <script src="<?= mix('/assets/js/app.js') ?>"></script>
 </body>
 </html>

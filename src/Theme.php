@@ -90,7 +90,7 @@ class Theme
 
         // Enqueue the editor.js file when we're in the block editor.
         add_action('enqueue_block_editor_assets', function () {
-            wp_enqueue_script('editor-js', mix('/js/editor.js'), [], '1.0.0', 'true');
+            wp_enqueue_script('editor-js', mix('/assets/js/editor.js'), [], '1.0.0', 'true');
         });
 
         // Tweak ACF WYSIWYG
@@ -113,7 +113,7 @@ class Theme
     private static function scripts(): void
     {
         add_action("wp_enqueue_scripts", function () {
-            wp_enqueue_style('critical', mix('/css/critical.css'));
+            wp_enqueue_style('critical', mix('/assets/css/critical.css'));
         });
     }
 

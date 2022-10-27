@@ -34,10 +34,10 @@ acf_register_block_type([
     "render_template" => __DIR__ . "/template.php",
 
     // Enqueue a style to load with the block.
-    // "enqueue_style" => mix("/css/blocks/example-block.css"),
+    // "enqueue_style" => mix("/assets/css/blocks/example-block.css"),
 
     // Enqueue a script to load with the block.
-    // "enqueue_script" => mix("/js/blocks/example-block.js"),
+    // "enqueue_script" => mix("/assets/js/blocks/example-block.js"),
 
     // Enqueue styles and scripts for the block.
     // "enqueue_assets" => function () {

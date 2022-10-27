@@ -18,24 +18,24 @@ mix.options({
 });
 
 // Compile JS
-mix.js('resources/js/app.js', 'js');
-mix.js('resources/js/editor.js', 'js');
+mix.js('resources/js/app.js', 'assets/js');
+mix.js('resources/js/editor.js', 'assets/js');
 
 // Compile SCSS
-mix.sass('resources/scss/critical.scss', 'css');
-mix.sass('resources/scss/style.scss', 'css');
-mix.sass('resources/scss/editor.scss', 'css');
+mix.sass('resources/scss/critical.scss', 'assets/css');
+mix.sass('resources/scss/style.scss', 'assets/css');
+mix.sass('resources/scss/editor.scss', 'assets/css');
 
 // Compile block assets
 fs.readdirSync("blocks").forEach(dirName => {
     // JS
     if (fs.existsSync(`blocks/${dirName}/resources/js/${dirName}.js`)) {
-        mix.js(`blocks/${dirName}/resources/js/${dirName}.js`, 'js/blocks');
+        mix.js(`blocks/${dirName}/resources/js/${dirName}.js`, 'assets/js/blocks');
     }
 
     // SCSS
     if (fs.existsSync(`blocks/${dirName}/resources/scss/${dirName}.scss`)) {
-        mix.sass(`blocks/${dirName}/resources/scss/${dirName}.scss`, 'css/blocks');
+        mix.sass(`blocks/${dirName}/resources/scss/${dirName}.scss`, 'assets/css/blocks');
     }
 });
 
@@ -43,12 +43,12 @@ fs.readdirSync("blocks").forEach(dirName => {
 fs.readdirSync("shortcodes").forEach(dirName => {
     // JS
     if (fs.existsSync(`shortcodes/${dirName}/resources/js/${dirName}.js`)) {
-        mix.js(`shortcodes/${dirName}/resources/js/${dirName}.js`, 'js/shortcodes');
+        mix.js(`shortcodes/${dirName}/resources/js/${dirName}.js`, 'assets/js/shortcodes');
     }
 
     // SCSS
     if (fs.existsSync(`shortcodes/${dirName}/resources/scss/${dirName}.scss`)) {
-        mix.sass(`shortcodes/${dirName}/resources/scss/${dirName}.scss`, 'css/shortcodes');
+        mix.sass(`shortcodes/${dirName}/resources/scss/${dirName}.scss`, 'assets/css/shortcodes');
     }
 });
 

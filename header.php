@@ -19,9 +19,9 @@
     */ ?>
 
     <!-- Defers load of style.css -->
-    <link rel="preload" href="<?= mix("/css/style.css") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="<?= mix("/assets/css/style.css") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="<?= mix("/css/style.css") ?>">
+        <link rel="stylesheet" href="<?= mix("/assets/css/style.css") ?>">
     </noscript>
 
 </head>
