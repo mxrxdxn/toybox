@@ -21,6 +21,7 @@
         "filp/whoops": "^2.14",
         "symfony/var-dumper": "6.0.x-dev",
         "spatie/ray": "dev-main",
-        "symfony/console": "6.0.10"
+        "symfony/console": "6.0.10",
+        "rosell-dk/webp-convert": "dev-master"
     }
 }
