@@ -77,11 +77,11 @@ You can create a block with the `make:block` command.
 php toybox make:block "My Block" --with-styles --with-js
 ```
 
-| Argument/Option | Example  | Required | Description                                          |
-|-----------------|----------|----------|------------------------------------------------------|
-| Block Name      | "My Block" | Yes      | The name of your block.                              |
-| --with-styles   |          | No       | Creates the block style (and directory if required). |
-| --with-js       |          | No       | Creates the block script (and directory if required). |
+| Argument/Option | Example    | Required | Description                                           |
+|-----------------|------------|----------|-------------------------------------------------------|
+| Block Name      | "My Block" | Yes      | The name of your block.                               |
+| --with-styles   |            | No       | Creates the block style (and directory if required).  |
+| --with-js       |            | No       | Creates the block script (and directory if required). |
 
 This will create your block under the `/blocks` directory.
 
