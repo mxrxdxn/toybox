@@ -1,6 +1,6 @@
 <?php
 
-// Register Custom Post Type
+// Register Custom Post Type "SLUGGED_SINGULAR_POST_TYPE"
 register_post_type('SLUGGED_SINGULAR_POST_TYPE', [
     'label'               => __('SINGULAR_POST_TYPE', 'toybox'),
     'description'         => __('My custom post type.', 'toybox'),
