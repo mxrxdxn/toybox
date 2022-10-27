@@ -85,6 +85,20 @@ php toybox make:block "My Block" --with-styles --with-js
 
 This will create your block under the `/blocks` directory.
 
+### Make Shortcode
+You can create a shortcode with the `make:shortcode` command.
+```bash
+php toybox make:shortcode "My Shortcode" --with-styles --with-js
+```
+
+| Argument/Option | Example        | Required | Description                                               |
+|-----------------|----------------|----------|-----------------------------------------------------------|
+| Shortcode Name  | "My Shortcode" | Yes      | The name of your shortcode.                               |
+| --with-styles   |                | No       | Creates the shortcode style (and directory if required).  |
+| --with-js       |                | No       | Creates the shortcode script (and directory if required). |
+
+This will create your shortcode under the `/shortcodes` directory.
+
 ### Export Block
 The `export:block` command exports any ACF field groups associated with a given block into the block's own `acf-json` folder. You must run this command if you are making the block redistributable.
 
