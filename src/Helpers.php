@@ -46,12 +46,12 @@ function uri(string $fileName): string
 /**
  * Generate a URL friendly "slug" from a given string.
  *
- * @param        $title
+ * @param string $title
  * @param string $separator
  *
  * @return string
  */
-function slugify($title, $separator = '-'): string
+function slugify(string $title, string $separator = '-'): string
 {
     // Convert all dashes/underscores into separator
     $flip = $separator === '-' ? '_' : '-';
@@ -76,7 +76,8 @@ if (! function_exists('ray')) {
      *
      * @param ...$args
      */
-    function ray(...$args) {
+    function ray(...$args): void
+    {
         // Ray isn't installed, just be quiet.
     }
 }

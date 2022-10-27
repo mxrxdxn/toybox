@@ -5,8 +5,10 @@
  * Toybox Command Line
  */
 
+use Maxweb\Toybox\Console\Kernel;
+
 const TOYBOX_DIR = __DIR__;
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
-(new \Maxweb\Toybox\Console\Kernel())->run();
+(new Kernel())->run();

@@ -1,12 +1,14 @@
 <?php
 
+use Maxweb\Toybox\Theme;
+
 require_once(get_theme_file_path("vendor/autoload.php"));
 
 // Boot the theme up
-\Maxweb\Toybox\Theme::boot();
+Theme::boot();
 
 // Register any nav menus
-\Maxweb\Toybox\Theme::setMenus([
+Theme::setMenus([
     'header_nav' => __("Header Navigation", "toybox"),
     'footer_nav' => __("Footer Navigation", "toybox"),
 ]);
