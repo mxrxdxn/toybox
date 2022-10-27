@@ -96,8 +96,8 @@ class Theme
         // Tweak ACF WYSIWYG
         add_filter('acf/fields/wysiwyg/toolbars', function ($toolbars) {
             // Edit the "Full" toolbar and add 'fontsizeselect' if not already present.
-            if (($key = array_search('fontsizeselect', $toolbars['Full'][2])) !== true) {
-                array_push($toolbars['Full'][2], 'fontsizeselect');
+            if ((array_search('fontsizeselect', $toolbars['Full'][2])) !== true) {
+                $toolbars['Full'][2][] = 'fontsizeselect';
             }
 
             return $toolbars;

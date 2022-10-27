@@ -63,7 +63,7 @@ class Kernel
      *
      * @return bool
      */
-    private static function isBedrock()
+    private static function isBedrock(): bool
     {
         return file_exists(__DIR__ . "/../../../../../wp/");
     }
@@ -71,7 +71,7 @@ class Kernel
     /**
      * Connect the command line to WordPress when required.
      *
-     * @param string $domain
+     * @param string|null $domain
      *
      * @return void
      * @throws Exception
