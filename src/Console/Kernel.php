@@ -51,8 +51,10 @@ class Kernel
      */
     private function registerCommands(): void
     {
-        $this->application->add(new MakeBlockCommand());
         $this->application->add(new ExportBlockCommand());
+        $this->application->add(new InspireCommand());
+        $this->application->add(new MakeBlockCommand());
+        $this->application->add(new MakeShortcodeCommand());
     }
 
     /**
