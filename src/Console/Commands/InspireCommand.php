@@ -33,6 +33,8 @@ class InspireCommand extends Command
             "\"Sounds like a you problem.\" - Ron, 2021",
             "\"She knows it's my couch.\" - Sam, 2022",
             "\"Sharing a bathroom with 4 other dudes isn't all bad.\" - Ben, 2022",
+            "\"Don't tell me to clear my cache!\" - Em, 2022",
+            "?nonitro fixes everything.",
             "\"It works on my local.\"",
             "If clearing your cache doesn't fix the problem, it never worked in the first place.",
             "Always code as if the person who ends up maintaining your code will be a violent psychopath who knows where you live.",
