@@ -64,6 +64,15 @@ The `uri()` function fetches the path to a given file, relative to the base dire
 ### `slugify($title, $separator = '-')`
 The `slugify()` function retrieves a URL-friendly representation of a string.
 
+### `singularize($value)`
+The `singularize()` function returns the singular form of a given word or phrase.
+
+### `pluralize($value, $count)`
+The `pluralize()` function returns the plural form of a given word or phrase, provided `$count` is not `1`.
+
+### `matchCase($value, $comparison)`
+The `matchCase()` function attempts to match the casing between two given strings.
+
 ## Command Line
 Toybox includes a command line interface. To access Toybox on the command line, enter the theme directory in your favourite terminal client and run the following:
 
