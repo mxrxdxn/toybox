@@ -130,8 +130,6 @@ It will also only convert the following file types when processing a directory: 
 | Path            | "images" | Yes      | The path to convert. You can either use a path relative to the theme root, or an absolute path. Additionally, if the path given is a directory, the command will recurse over all files and directories inside the given path and convert all supported filetypes to WebP. |
 | Quality         | 75       | No       | The quality to use during conversion, 0-100. The closer to 100, the better quality (and larger filesize) the output will be.                                                                                                                                               |
 
-This will create your post type under the `/post-types` directory.
-
 ### Export Block
 The `export:block` command exports any ACF field groups associated with a given block into the block's own `acf-json` folder. You must run this command if you are making the block redistributable.
 
