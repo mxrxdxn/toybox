@@ -99,6 +99,39 @@ php toybox make:shortcode "My Shortcode" --with-styles --with-js
 
 This will create your shortcode under the `/shortcodes` directory.
 
+### Make Post Type
+You can create a post type with the `make:post-type` command.
+```bash
+php toybox make:post-type "Services"
+```
+
+| Argument/Option | Example        | Required | Description                 |
+|-----------------|----------------|----------|-----------------------------|
+| Post Type Name  | "My Post Type" | Yes      | The name of your post type. |
+
+This will create your post type under the `/post-types
+
+### WebP Conversion
+You can convert a single image, or a path containing images to WebP format with the `images:convert` command.
+```bash
+php toybox images:convert -p images/image.png
+```
+
+```bash
+php toybox images:convert -p images
+```
+
+Note that this command will not overwrite the original image - it will create a new image from the original source and append the ".webp" extension to the end.
+
+It will also only convert the following file types when processing a directory: .jpg, .jpeg, .png.
+
+| Argument/Option | Example  | Required | Description                                                                                                                                                                                                                                                                |
+|-----------------|----------|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Path            | "images" | Yes      | The path to convert. You can either use a path relative to the theme root, or an absolute path. Additionally, if the path given is a directory, the command will recurse over all files and directories inside the given path and convert all supported filetypes to WebP. |
+| Quality         | 75       | No       | The quality to use during conversion, 0-100. The closer to 100, the better quality (and larger filesize) the output will be.                                                                                                                                               |
+
+This will create your post type under the `/post-types` directory.
+
 ### Export Block
 The `export:block` command exports any ACF field groups associated with a given block into the block's own `acf-json` folder. You must run this command if you are making the block redistributable.
 
