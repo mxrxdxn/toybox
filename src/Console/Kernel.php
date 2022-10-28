@@ -4,6 +4,7 @@ namespace Maxweb\Toybox\Console;
 
 use Exception;
 use Maxweb\Toybox\Console\Commands\ExportBlockCommand;
+use Maxweb\Toybox\Console\Commands\ImagesConvertCommand;
 use Maxweb\Toybox\Console\Commands\InspireCommand;
 use Maxweb\Toybox\Console\Commands\MakeBlockCommand;
 use Maxweb\Toybox\Console\Commands\MakePostTypeCommand;
@@ -53,6 +54,7 @@ class Kernel
     private function registerCommands(): void
     {
         $this->application->add(new ExportBlockCommand());
+        $this->application->add(new ImagesConvertCommand());
         $this->application->add(new InspireCommand());
         $this->application->add(new MakeBlockCommand());
         $this->application->add(new MakePostTypeCommand());
