@@ -34,8 +34,8 @@ class MakeBlockCommand extends Command
         $name = $input->getArgument("name");
 
         // Options
-        $withStyles = $input->getOption("with-styles");
-        $withJS     = $input->getOption("with-js");
+        $withoutStyles = $input->getOption("without-styles");
+        $withoutJS     = $input->getOption("without-js");
 
         // Slug the name
         $sluggedName = slugify($name);
@@ -60,7 +60,7 @@ class MakeBlockCommand extends Command
         $output->writeln("<info>Created block successfully.</info>");
 
         // Create resources folder
-        if ($withStyles || $withJS) {
+        if (! ($withoutStyles && $withoutJS)) {
             // Create the resources directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources");
 
@@ -68,7 +68,7 @@ class MakeBlockCommand extends Command
         }
 
         // Create Styles
-        if ($withStyles) {
+        if (! $withoutStyles) {
             // Create the SCSS directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/scss");
 
@@ -85,7 +85,7 @@ class MakeBlockCommand extends Command
         }
 
         // Create JS
-        if ($withJS) {
+        if (! $withoutJS) {
             // Create the JS directory
             mkdir(TOYBOX_DIR . "/blocks/{$sluggedName}/resources/js");
 
@@ -97,7 +97,7 @@ class MakeBlockCommand extends Command
         }
 
         // Show a final message if resources were added
-        if ($withStyles || $withJS) {
+        if (! ($withoutStyles || $withoutJS)) {
             $output->writeln("<comment>Your block assets should be automatically detected. If you are currently running `npm run watch`,</comment>");
             $output->writeln("<comment>you will need to cancel the process and start it again.</comment>");
         }
@@ -130,18 +130,18 @@ class MakeBlockCommand extends Command
 
         // With Styles
         $this->addOption(
-            "with-styles",
+            "without-styles",
             null,
             InputOption::VALUE_NONE,
-            "Include style assets"
+            "Don't include style assets"
         );
 
         // With JS
         $this->addOption(
-            "with-js",
+            "without-js",
             null,
             InputOption::VALUE_NONE,
-            "Include JS assets"
+            "Don't include JS assets"
         );
     }
 }
