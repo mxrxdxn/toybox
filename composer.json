@@ -1,14 +1,8 @@
 {
-    "name": "maxweb/toybox",
+    "name": "toybox/theme",
     "description": "Toybox is a simple block-based theme boilerplate for WordPress v6+ and PHP 8+.",
     "type": "project",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Maxweb\\Toybox\\": "src/"
-        },
-        "files": ["src/Helpers.php"]
-    },
     "authors": [
         {
             "name": "Ron Marsden",
@@ -17,12 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.1",
-        "filp/whoops": "^2.14",
-        "symfony/var-dumper": "6.0.x-dev",
-        "spatie/ray": "^1.37",
-        "symfony/console": "6.0.10",
-        "rosell-dk/webp-convert": "dev-master",
-        "doctrine/inflector": "2.1.x-dev"
+        "toybox/core": "^2.0"
     }
 }

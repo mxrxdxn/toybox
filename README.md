@@ -11,7 +11,7 @@ Toybox is a simple block-based theme boilerplate for WordPress v6+ and PHP 8+.
 ## Installation
 * Run the following command in your `wp-content/themes` directory to download and install the theme (and its dependencies):
 ```bash
-composer create-project maxweb/toybox toybox --repository="{\"url\": \"git@bitbucket.org:liam-maxweb/toybox.git\", \"type\": \"vcs\"}" --stability=dev --remove-vcs
+composer create-project toybox/theme toybox --stability=dev --remove-vcs
 ```
 * Run `npm i`.
 

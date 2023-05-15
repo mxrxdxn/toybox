@@ -5,7 +5,7 @@
  * Toybox Command Line
  */
 
-use Maxweb\Toybox\Console\Kernel;
+use Toybox\Core\Console\Kernel;
 
 const TOYBOX_DIR = __DIR__;
 

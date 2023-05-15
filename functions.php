@@ -1,6 +1,8 @@
 <?php
 
-use Maxweb\Toybox\Theme;
+use Toybox\Core\Theme;
+
+const TOYBOX_DIR = __DIR__;
 
 require_once(get_theme_file_path("vendor/autoload.php"));
 
