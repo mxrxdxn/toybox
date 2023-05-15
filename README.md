@@ -73,6 +73,21 @@ The `pluralize()` function returns the plural form of a given word or phrase, pr
 ### `matchCase($value, $comparison)`
 The `matchCase()` function attempts to match the casing between two given strings.
 
+### `field($fieldName, $postID)`
+A WordPress-friendly replacement for ACF's `get_field()` function.
+
+### `repeater($fieldName, $postID, $subFields)`
+A WordPress-friendly replacement for ACF's `get_field()` function that returns fields from a repeater.
+
+### `group($fieldName, $postID, $subFields)`
+A WordPress-friendly replacement for ACF's `get_field()` function that returns fields from a group.
+
+### `image_url($imageID)`
+A function to retrieve an attachment's URL from an attachment ID.
+
+### `image_alt($imageID)`
+A function to retrieve an attachment's `alt` text from an attachment ID.
+
 ## Command Line
 Toybox includes a command line interface. To access Toybox on the command line, enter the theme directory in your favourite terminal client and run the following:
 
@@ -83,14 +98,14 @@ php toybox
 ### Make Block
 You can create a block with the `make:block` command.
 ```bash
-php toybox make:block "My Block" --with-styles --with-js
+php toybox make:block "My Block" --without-styles --without-js
 ```
 
-| Argument/Option | Example    | Required | Description                                           |
-|-----------------|------------|----------|-------------------------------------------------------|
-| Block Name      | "My Block" | Yes      | The name of your block.                               |
-| --with-styles   |            | No       | Creates the block style (and directory if required).  |
-| --with-js       |            | No       | Creates the block script (and directory if required). |
+| Argument/Option  | Example    | Required | Description                                   |
+|------------------|------------|----------|-----------------------------------------------|
+| Block Name       | "My Block" | Yes      | The name of your block.                       |
+| --without-styles |            | No       | Skip creating the block style and directory.  |
+| --without-js     |            | No       | Skip creating the block script and directory. |
 
 This will create your block under the `/blocks` directory.
 
@@ -152,3 +167,10 @@ php toybox export:block "My Block"
 | --domain=mysite.com                  | mysite.com          | No (Yes when on multisite WordPress)             | When using Toybox on a WordPress multisite, you must tell WordPress which domain you are using so that it can connect to the correct database. |
 | --fieldgroup / -g "Field Group Name" | "My Block Settings" | No (prompts for the field group if not provided) | The name of the field group to export.                                                                                                         |
 | --location / -l                      |                     | No                                               | Export all field groups that have been assigned to the block.                                                                                  |
+
+## Snippets
+Toybox ships with a built-in snippets feature. The idea of snippets is they are individual pieces of code that you want to load as part of the theme that don't need to be built into the theme core.
+As you may want these on different hooks or filters, they don't load on a particlar hook, and instead load during the theme's `boot()` method.
+
+To create a snippet, put your code into a PHP file in the `snippets` directory. Be sure to use WordPress' `add_action` or `add_filter` (or another such function) with an appropriate priority to avoid adding unnecessary overhead to every page load.
+

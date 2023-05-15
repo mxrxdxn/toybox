@@ -49,6 +49,11 @@ class MakeBlockCommand extends Command
         $initFile = str_replace('Example Block', $name, $initFile);
         file_put_contents(TOYBOX_DIR . "/blocks/{$sluggedName}/init.php", $initFile);
 
+        $jsonDeclaration = file_get_contents(TOYBOX_DIR . "/src/stubs/example-block/block.json");
+        $jsonDeclaration = str_replace('example-block', $sluggedName, $jsonDeclaration);
+        $jsonDeclaration = str_replace('Example Block', $name, $jsonDeclaration);
+        file_put_contents(TOYBOX_DIR . "/blocks/{$sluggedName}/block.json", $jsonDeclaration);
+
         $templateFile = file_get_contents(TOYBOX_DIR . "/src/stubs/example-block/template.php");
         $templateFile = str_replace('example-block', $sluggedName, $templateFile);
         $templateFile = str_replace('example-', "{$sluggedName}-", $templateFile);
@@ -98,8 +103,7 @@ class MakeBlockCommand extends Command
 
         // Show a final message if resources were added
         if (! ($withoutStyles || $withoutJS)) {
-            $output->writeln("<comment>Your block assets should be automatically detected. If you are currently running `npm run watch`,</comment>");
-            $output->writeln("<comment>you will need to cancel the process and start it again.</comment>");
+            $output->writeln("<comment>Your block assets should be automatically detected. If you are currently running `npm run watch`, you will need to cancel the process and start it again.</comment>");
         }
 
         return Command::SUCCESS;

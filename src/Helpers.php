@@ -11,13 +11,14 @@ const MIX_MANIFEST = __DIR__ . "/../mix-manifest.json";
 /**
  * Fetch a versioned asset URL from the mix manifest file.
  *
- * @param string      $fileName     Path of the file to load, relative to the theme base URI.
- * @param string|null $manifestPath Path to the mix-manifest.json file.
+ * @param string      $fileName           Path of the file to load, relative to the theme base URI.
+ * @param string|null $manifestPath       Path to the mix-manifest.json file.
+ * @param bool        $includeCacheBuster Whether to include the cache buster string.
  *
  * @return string
  * @throws Exception
  */
-function mix(string $fileName, string|null $manifestPath = null): string
+function mix(string $fileName, string|null $manifestPath = null, bool $includeCacheBuster = true): string
 {
     // Fetch the manifest
     if (! empty($manifestPath)) {
@@ -29,6 +30,10 @@ function mix(string $fileName, string|null $manifestPath = null): string
     // If the file can't be found, throw an exception
     if (! array_key_exists($fileName, $manifest)) {
         throw new Exception("Could not find {$fileName} in manifest. Try rebuilding your assets with `npm run build`.");
+    }
+
+    if ($includeCacheBuster === false) {
+        $manifest[$fileName] = explode('?id=', $manifest[$fileName])[0];
     }
 
     return uri($manifest[$fileName]);
@@ -97,7 +102,8 @@ function matchCase(string $value, string $comparison): string
 /**
  * Get the singular form of an English word.
  *
- * @param  string  $value
+ * @param string $value
+ *
  * @return string
  */
 function singularize(string $value): string
@@ -158,5 +164,141 @@ if (! function_exists('ray')) {
     function ray(...$args): void
     {
         // Ray isn't installed, just be quiet.
+    }
+}
+
+if (! function_exists('field')) {
+    /**
+     * Fetch a custom field for a given post.
+     *
+     * @param string          $field  The field name.
+     * @param int|string|null $postID The post ID.
+     *
+     * @return string
+     */
+    function field(string $field, int|string|null $postID = null): string
+    {
+        if ($postID === null) {
+            $postID = get_the_ID();
+        } elseif ($postID === "option" || $postID === "options") {
+            $field = "options_{$field}";
+            // echo $field . "<br>";
+            return do_shortcode(get_option($field));
+        }
+
+        return do_shortcode(get_post_meta($postID, $field, true));
+    }
+}
+
+if (! function_exists('repeater')) {
+    /**
+     * Fetch a custom field for a given post.
+     *
+     * @param string          $field     The field name.
+     * @param int|string|null $postID    The post ID.
+     * @param array           $subFields An array of sub-fields to retrieve.
+     *
+     * @return array
+     */
+    function repeater(string $field, int|string|null $postID = null, array $subFields = []): array
+    {
+        if ($postID === null) {
+            $postID = get_the_ID();
+        } elseif ($postID === "option" || $postID === "options") {
+            $fieldCount = get_option("options_{$field}");
+
+            $repeater = [];
+
+            for ($i = 0; $i < $fieldCount; $i++) {
+                $data = [];
+
+                foreach ($subFields as $subField) {
+                    $data[$subField] = field("{$field}_{$i}_{$subField}", $postID);
+                }
+
+                $repeater[] = $data;
+            }
+
+            return $repeater;
+        }
+
+        $fieldCount = (int) field($field, $postID);
+
+        $repeater = [];
+
+        for ($i = 0; $i < $fieldCount; $i++) {
+            $data = [];
+
+            foreach ($subFields as $subField) {
+                $data[$subField] = field("{$field}_{$i}_{$subField}", $postID);
+            }
+
+            $repeater[] = $data;
+        }
+
+        return $repeater;
+    }
+}
+
+if (! function_exists('group')) {
+    /**
+     * Fetch a custom field group for a given post.
+     *
+     * @param string          $field     The field name.
+     * @param int|string|null $postID    The post ID.
+     * @param array           $subFields An array of sub-fields to retrieve.
+     *
+     * @return array
+     */
+    function group(string $field, int|string|null $postID = null, array $subFields = []): array
+    {
+        if ($postID === null) {
+            $postID = get_the_ID();
+        } elseif ($postID === "option" || $postID === "options") {
+            $group = [];
+
+            foreach ($subFields as $subField) {
+                $group[$subField] = field("{$field}_{$subField}", $postID);
+            }
+
+            return $group;
+        }
+
+        $group = [];
+
+        foreach ($subFields as $subField) {
+            $group[$subField] = field("{$field}_{$subField}", $postID);
+        }
+
+        return $group;
+    }
+}
+
+if (! function_exists('image_url')) {
+    /**
+     * Fetches an image URL for a given size.
+     *
+     * @param int    $imageID The image ID.
+     * @param string $size    The size the get the URL for.
+     *
+     * @return string
+     */
+    function image_url(int $imageID, string $size = "full"): string
+    {
+        return wp_get_attachment_image_src($imageID, $size)[0];
+    }
+}
+
+if (! function_exists('image_alt')) {
+    /**
+     * Fetches an image's `alt` text.
+     *
+     * @param int $imageID The image ID.
+     *
+     * @return string
+     */
+    function image_alt(int $imageID): string
+    {
+        return get_post_meta($imageID, "_wp_attachment_image_alt", true);
     }
 }

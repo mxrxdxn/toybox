@@ -60,7 +60,7 @@ class ExportBlockCommand extends Command
         // Search by location
         if ($location !== false) {
             // Fetch all field groups for the block
-            $fieldGroups = acf_get_field_groups(['block' => 'acf/' . slugify($name)]);
+            $fieldGroups = acf_get_field_groups(['block' => 'toybox/' . slugify($name)]);
             $totalGroups = count($fieldGroups);
             $groupLabel  = $totalGroups === 1 ? "group" : "groups";
 

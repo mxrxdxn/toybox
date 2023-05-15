@@ -13,6 +13,6 @@ $id = 'example-' . $block['id'];
 
 ?>
 
-<div class="block-example <?= $block['className'] ?>" id="<?= $id ?>">
+<div class="block-example <?= $block['className'] ?? "" ?>" id="<?= $id ?>">
     <!-- Your block content goes here. -->
 </div>

@@ -9,6 +9,7 @@ use Maxweb\Toybox\Console\Commands\InspireCommand;
 use Maxweb\Toybox\Console\Commands\MakeBlockCommand;
 use Maxweb\Toybox\Console\Commands\MakePostTypeCommand;
 use Maxweb\Toybox\Console\Commands\MakeShortcodeCommand;
+use Maxweb\Toybox\Console\Commands\MediaRegenerateCommand;
 use Maxweb\Toybox\Theme;
 use Symfony\Component\Console\Application;
 
