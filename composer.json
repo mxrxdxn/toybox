@@ -11,6 +11,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "toybox/core": "^2.0"
+        "toybox/core": "^2.1"
     }
 }

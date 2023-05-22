@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1805419724932a1946c3fd35d2b92fd1",
+    "content-hash": "aab3acb4164c37da75a0bb5612447dfd",
     "packages": [
         {
             "name": "brick/math",
@@ -423,12 +423,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "c2feb4cd9e5331f388cb33a50b75c1ee8f1ac618"
+                "reference": "6f6cee9992db6272f1c03ad32400b0aff933001a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/c2feb4cd9e5331f388cb33a50b75c1ee8f1ac618",
-                "reference": "c2feb4cd9e5331f388cb33a50b75c1ee8f1ac618",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/6f6cee9992db6272f1c03ad32400b0aff933001a",
+                "reference": "6f6cee9992db6272f1c03ad32400b0aff933001a",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-01T22:03:25+00:00"
+            "time": "2023-05-15T22:03:57+00:00"
         },
         {
             "name": "rosell-dk/exec-with-fallback",
@@ -1977,17 +1977,11 @@
         },
         {
             "name": "toybox/core",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mxrxdxn/toybox-core.git",
-                "reference": "f0cfd620c5630f1383f59fa66468d59894556b99"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/f0cfd620c5630f1383f59fa66468d59894556b99",
-                "reference": "f0cfd620c5630f1383f59fa66468d59894556b99",
-                "shasum": ""
+                "type": "path",
+                "url": "/Users/ronmarsden/Repos/toybox-core",
+                "reference": "f0cfd620c5630f1383f59fa66468d59894556b99"
             },
             "require": {
                 "doctrine/inflector": "^2.0",
@@ -2000,14 +1994,13 @@
             },
             "type": "library",
             "autoload": {
-                "files": [
-                    "src/Helpers.php"
-                ],
                 "psr-4": {
                     "Toybox\\Core\\": "src/"
-                }
+                },
+                "files": [
+                    "src/Helpers.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2018,17 +2011,17 @@
                 }
             ],
             "description": "The core that drives the Toybox WordPress theme.",
-            "support": {
-                "issues": "https://github.com/mxrxdxn/toybox-core/issues",
-                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.0.1"
-            },
-            "time": "2023-05-15T21:34:37+00:00"
+            "transport-options": {
+                "relative": false
+            }
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "toybox/core": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
