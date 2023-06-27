@@ -109,6 +109,8 @@ php toybox make:block "My Block" --without-styles --without-js
 
 This will create your block under the `/blocks` directory.
 
+Blocks now generate in the Blocks v2 format. Metadata is now added into a block.json file that is included as part of the generated block. [You can see the official WordPress documentation for this file here](https://developer.wordpress.org/block-editor/reference-guides/block-api/block-metadata/). [Additional information about the ACF implementation can be found here](https://www.advancedcustomfields.com/resources/acf-blocks-with-block-json/).
+
 ### Make Shortcode
 You can create a shortcode with the `make:shortcode` command.
 ```bash
