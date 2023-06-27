@@ -14,7 +14,7 @@ use Toybox\Core\Debug\ErrorHandler;
 use Toybox\Core\Theme;
 
 if (! defined("TOYBOX_DIR")) {
-    const TOYBOX_DIR = __DIR__;
+    define("TOYBOX_DIR", __DIR__);
 }
 
 require_once(get_theme_file_path("vendor/autoload.php"));
