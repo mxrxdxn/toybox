@@ -7,7 +7,9 @@
 
 use Toybox\Core\Console\Kernel;
 
-const TOYBOX_DIR = __DIR__;
+if (! defined("TOYBOX_DIR")) {
+    const TOYBOX_DIR = __DIR__;
+}
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
