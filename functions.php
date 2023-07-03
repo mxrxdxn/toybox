@@ -100,6 +100,9 @@ Settings::registerPage([
     'parent_slug' => 'theme-general-settings',
 ]);
 
+// Preload assets
+HTTP::preload();
+
 // Add early hints
 HTTP::hint(mix('/assets/css/critical.css'), "rel=preload; as=style");
 
