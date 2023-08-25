@@ -1,4 +1,12 @@
 # Toybox Changelog
+## v2.3.0 (25/08/2023)
+* Block ACF fields now auto-save to the block (requires ACF 6.2).
+* Added new `lazy()` helper function.
+
+## v2.2.0 (03/07/2023)
+* New API component.
+* New block preloading methodology.
+
 ## v2.1.0 (22/05/2023)
 * Modularize components.
 
