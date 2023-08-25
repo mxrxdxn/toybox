@@ -1,4 +1,7 @@
 # Toybox Changelog
+## v2.3.1 (25/08/2023)
+* Adds new Image component.
+
 ## v2.3.0 (25/08/2023)
 * Block ACF fields now auto-save to the block (requires ACF 6.2).
 * Added new `lazy()` helper function.
