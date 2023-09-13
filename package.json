@@ -1,6 +1,6 @@
 {
   "name": "toybox",
-  "version": "2.1.0",
+  "version": "2.5.0",
   "description": "Toybox is a simple block-based theme boilerplate for WordPress v6+ and PHP 8+.",
   "main": "index.js",
   "scripts": {
@@ -17,11 +17,11 @@
   "author": "Maxweb Solutions",
   "license": "MIT",
   "devDependencies": {
-    "flexya": "^1.7.1",
+    "flexya": "^1.8.2",
     "laravel-mix": "^6.0.49",
     "normalize.css": "^8.0.1",
     "resolve-url-loader": "^5.0.0",
-    "sass": "^1.62.1",
+    "sass": "^1.66.1",
     "sass-loader": "^12.6.0"
   }
 }

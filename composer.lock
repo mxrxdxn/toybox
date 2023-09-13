@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53b6fd474dee616da4a038cb7a0048b5",
+    "content-hash": "5bb57b0a3e05095926bd5a9c67e4746a",
     "packages": [
         {
             "name": "brick/math",
@@ -229,12 +229,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "028ef2ab76485c9fd3b6d7214daf4efc02c89c53"
+                "reference": "d3298b38ea8612e5f77d38d1a99438e42f70341d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/028ef2ab76485c9fd3b6d7214daf4efc02c89c53",
-                "reference": "028ef2ab76485c9fd3b6d7214daf4efc02c89c53",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d3298b38ea8612e5f77d38d1a99438e42f70341d",
+                "reference": "d3298b38ea8612e5f77d38d1a99438e42f70341d",
                 "shasum": ""
             },
             "require": {
@@ -328,7 +328,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-09T19:41:55+00:00"
+            "time": "2023-09-07T16:43:50+00:00"
         },
         {
             "name": "psr/clock",
@@ -578,12 +578,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "8f5309dfaf80e369be15b734d94c14f7686a19e4"
+                "reference": "c05b6662e948e1e8bca0c4dce3518c7e7bb6e1c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/8f5309dfaf80e369be15b734d94c14f7686a19e4",
-                "reference": "8f5309dfaf80e369be15b734d94c14f7686a19e4",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/c05b6662e948e1e8bca0c4dce3518c7e7bb6e1c9",
+                "reference": "c05b6662e948e1e8bca0c4dce3518c7e7bb6e1c9",
                 "shasum": ""
             },
             "require": {
@@ -663,7 +663,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-21T21:20:51+00:00"
+            "time": "2023-09-04T21:23:40+00:00"
         },
         {
             "name": "rosell-dk/exec-with-fallback",
@@ -1247,16 +1247,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.37.2",
+            "version": "1.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "dea16182d4bc9d9833adec7e39fbb3d7b553425d"
+                "reference": "b77656d7475875375fcbccf28441eedf1596acd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/dea16182d4bc9d9833adec7e39fbb3d7b553425d",
-                "reference": "dea16182d4bc9d9833adec7e39fbb3d7b553425d",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/b77656d7475875375fcbccf28441eedf1596acd5",
+                "reference": "b77656d7475875375fcbccf28441eedf1596acd5",
                 "shasum": ""
             },
             "require": {
@@ -1307,7 +1307,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.37.2"
+                "source": "https://github.com/spatie/ray/tree/1.38.0"
             },
             "funding": [
                 {
@@ -1319,7 +1319,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2023-05-17T06:35:47+00:00"
+            "time": "2023-09-12T10:41:10+00:00"
         },
         {
             "name": "symfony/console",
@@ -1327,12 +1327,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "0870356afcf5ca95010d74f36e6a0b41a5c3a875"
+                "reference": "f542ffc1dc4b42eb57b67f07d31b91ae9d501419"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/0870356afcf5ca95010d74f36e6a0b41a5c3a875",
-                "reference": "0870356afcf5ca95010d74f36e6a0b41a5c3a875",
+                "url": "https://api.github.com/repos/symfony/console/zipball/f542ffc1dc4b42eb57b67f07d31b91ae9d501419",
+                "reference": "f542ffc1dc4b42eb57b67f07d31b91ae9d501419",
                 "shasum": ""
             },
             "require": {
@@ -1410,7 +1410,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-17T15:49:45+00:00"
+            "time": "2023-09-10T14:56:30+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1545,7 +1545,7 @@
                 "portable"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-ctype/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-ctype/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1627,7 +1627,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1712,7 +1712,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-intl-normalizer/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1796,7 +1796,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -1880,7 +1880,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/1.x"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.28.0"
             },
             "funding": [
                 {
@@ -2135,12 +2135,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "918dd68ca5f257ad0ba42df0bce40088af20e2f6"
+                "reference": "dcda32b84dbe07c10941abe1cbbb402f84ad9674"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/918dd68ca5f257ad0ba42df0bce40088af20e2f6",
-                "reference": "918dd68ca5f257ad0ba42df0bce40088af20e2f6",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/dcda32b84dbe07c10941abe1cbbb402f84ad9674",
+                "reference": "dcda32b84dbe07c10941abe1cbbb402f84ad9674",
                 "shasum": ""
             },
             "require": {
@@ -2222,7 +2222,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-01T08:05:37+00:00"
+            "time": "2023-08-25T16:27:31+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -2309,12 +2309,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "23c7dd6bd0616d6e706af1353373bc28d633cd8e"
+                "reference": "86cb4d6285f10aac12d120fbaa76dc02350ef085"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/23c7dd6bd0616d6e706af1353373bc28d633cd8e",
-                "reference": "23c7dd6bd0616d6e706af1353373bc28d633cd8e",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/86cb4d6285f10aac12d120fbaa76dc02350ef085",
+                "reference": "86cb4d6285f10aac12d120fbaa76dc02350ef085",
                 "shasum": ""
             },
             "require": {
@@ -2386,31 +2386,31 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T07:16:29+00:00"
+            "time": "2023-09-11T16:39:34+00:00"
         },
         {
             "name": "toybox/core",
-            "version": "v2.3.0",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mxrxdxn/toybox-core.git",
-                "reference": "ed148e6eb73162b3011d3fc17aeff4ce2dbc1d51"
+                "reference": "2fa8abcf74b621b2c91a79ec35d3e7bb1fedb27d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/ed148e6eb73162b3011d3fc17aeff4ce2dbc1d51",
-                "reference": "ed148e6eb73162b3011d3fc17aeff4ce2dbc1d51",
+                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/2fa8abcf74b621b2c91a79ec35d3e7bb1fedb27d",
+                "reference": "2fa8abcf74b621b2c91a79ec35d3e7bb1fedb27d",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^2.0",
                 "filp/whoops": "^2.15",
-                "nesbot/carbon": "^2.66",
+                "nesbot/carbon": "^2.70",
                 "php": "^8.1",
                 "rosell-dk/webp-convert": "^2.9",
-                "spatie/ray": "^1.37",
-                "symfony/console": "^6.2",
-                "symfony/var-dumper": "^6.2"
+                "spatie/ray": "^1.38",
+                "symfony/console": "^6.3",
+                "symfony/var-dumper": "^6.3"
             },
             "type": "library",
             "autoload": {
@@ -2434,9 +2434,9 @@
             "description": "The core that drives the Toybox WordPress theme.",
             "support": {
                 "issues": "https://github.com/mxrxdxn/toybox-core/issues",
-                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.3.0"
+                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.5.0"
             },
-            "time": "2023-08-25T10:25:55+00:00"
+            "time": "2023-09-13T13:37:12+00:00"
         }
     ],
     "packages-dev": [],

@@ -1,4 +1,13 @@
 # Toybox Changelog
+## v2.5.0 (13/09/2023)
+* Add block render method for rendering blocks outside the block editor (and block editor-powered pages).
+* Add deprecation notice to `export:block` command.
+* Update theme dependencies.
+
+## v2.4.0 (03/09/2023)
+* Adds support for block patterns.
+* Blocks now save their ACF data to the block directory by default (requires ACF 6.2). 
+
 ## v2.3.1 (25/08/2023)
 * Adds new Image component.
 
