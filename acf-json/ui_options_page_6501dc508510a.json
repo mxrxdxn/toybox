@@ -1,0 +1,23 @@
+{
+    "key": "ui_options_page_6501dc508510a",
+    "title": "Contact Information",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Contact Information",
+    "menu_slug": "contact-information",
+    "parent_slug": "site-settings",
+    "advanced_configuration": 0,
+    "icon_url": "",
+    "menu_title": "",
+    "position": "",
+    "redirect": false,
+    "description": "",
+    "update_button": "Update",
+    "updated_message": "Options Updated",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "_parent": 16,
+    "modified": 1694620792
+}

@@ -79,27 +79,6 @@ Misc::addFileSupport([
     "webp" => "image/webp",
 ]);
 
-// Setup settings pages
-Settings::registerPage([
-    'page_title' => 'Theme General Settings',
-    'menu_title' => 'Theme Settings',
-    'menu_slug'  => 'theme-general-settings',
-    'capability' => 'edit_posts',
-    'redirect'   => false,
-]);
-
-Settings::registerPage([
-    'page_title'  => 'Contact Information',
-    'menu_title'  => 'Contact',
-    'parent_slug' => 'theme-general-settings',
-]);
-
-Settings::registerPage([
-    'page_title'  => 'Social Media',
-    'menu_title'  => 'Social Media',
-    'parent_slug' => 'theme-general-settings',
-]);
-
 // Preload assets
 HTTP::preload();
 

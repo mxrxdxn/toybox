@@ -6,7 +6,7 @@
  * @param css              Enable lazy loading for CSS (add data-lazy-css="href" to the tag.)
  * @param js               Enable lazy loading for JS (add data-lazy-js="src" to the tag.)
  */
-export const lazyLoading = (images = true, backgroundImages = true, css = true, js = true) => {
+export const lazyLoading = (images = true, backgroundImages = true, css = true, js = true, attributes = true) => {
     // Lazy load images
     if (images === true) {
         lazyLoadImages();
@@ -25,6 +25,11 @@ export const lazyLoading = (images = true, backgroundImages = true, css = true, 
     // Lazy load JS
     if (js === true) {
         lazyLoadJS();
+    }
+
+    // Lazy load any attribute
+    if (attributes === true) {
+        lazyLoadAttributes();
     }
 }
 
@@ -57,7 +62,7 @@ const lazyLoadImages = () => {
             }
 
             lazyLoadThrottleTimeout = setTimeout(() => {
-                let scrollTop = window.pageYOffset;
+                let scrollTop = window.scrollY;
 
                 lazyLoadImages.forEach(img => {
                     if (img.offsetTop < (window.innerHeight + scrollTop)) {
@@ -110,7 +115,7 @@ const lazyLoadBackgroundImages = () => {
             }
 
             lazyLoadThrottleTimeout = setTimeout(() => {
-                let scrollTop = window.pageYOffset;
+                let scrollTop = window.scrollY;
 
                 lazyLoadBackgroundImages.forEach(element => {
                     if (element.offsetTop < (window.innerHeight + scrollTop)) {
@@ -169,7 +174,7 @@ const lazyLoadCSS = () => {
             }
 
             lazyLoadThrottleTimeout = setTimeout(() => {
-                let scrollTop = window.pageYOffset;
+                let scrollTop = window.scrollY;
 
                 lazyLoadCSS.forEach(element => {
                     if (element.offsetTop < (window.innerHeight + scrollTop)) {
@@ -231,7 +236,7 @@ const lazyLoadJS = () => {
             }
 
             lazyLoadThrottleTimeout = setTimeout(() => {
-                let scrollTop = window.pageYOffset;
+                let scrollTop = window.scrollY;
 
                 lazyLoadJS.forEach(element => {
                     if (element.offsetTop < (window.innerHeight + scrollTop)) {
@@ -256,3 +261,76 @@ const lazyLoadJS = () => {
         window.addEventListener("orientationChange", lazyLoad);
     }
 }
+
+const lazyLoadAttributes = () => {
+    let lazyLoadAttributes;
+
+    if ("IntersectionObserver" in window) {
+        lazyLoadAttributes = document.querySelectorAll("[data-lazy-attr]");
+
+        let elementObserver = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let element = entry.target;
+                    let attributes = JSON.parse(element.getAttribute("data-lazy-attr"));
+
+                    for (let key in attributes) {
+                        if (attributes.hasOwnProperty(key)) {
+                            let value = attributes[key];
+
+                            element.setAttribute(key, value);
+                        }
+                    }
+
+                    element.removeAttribute('data-lazy-attr');
+                    elementObserver.unobserve(element);
+                }
+            });
+        });
+
+        lazyLoadAttributes.forEach(image => {
+            elementObserver.observe(image);
+        });
+    } else {
+        let lazyLoadThrottleTimeout;
+
+        lazyLoadAttributes = document.querySelectorAll("[data-lazy-attr]");
+
+        const lazyLoad = () => {
+            if (lazyLoadThrottleTimeout) {
+                clearTimeout(lazyLoadThrottleTimeout);
+            }
+
+            lazyLoadThrottleTimeout = setTimeout(() => {
+                let scrollTop = window.scrollY;
+
+                lazyLoadAttributes.forEach(element => {
+                    if (element.offsetTop < (window.innerHeight + scrollTop)) {
+
+                        let attributes = JSON.parse(element.getAttribute("data-lazy-attr"));
+
+                        for (let key in attributes) {
+                            if (attributes.hasOwnProperty(key)) {
+                                let value = attributes[key];
+
+                                element.setAttribute(key, value);
+                            }
+                        }
+
+                        element.removeAttribute('data-lazy-attr');
+                    }
+                });
+
+                if (lazyLoadAttributes.length === 0) {
+                    document.removeEventListener("scroll",          lazyLoad);
+                    window.removeEventListener("resize",            lazyLoad);
+                    window.removeEventListener("orientationChange", lazyLoad);
+                }
+            }, 20);
+        }
+
+        document.addEventListener("scroll",          lazyLoad);
+        window.addEventListener("resize",            lazyLoad);
+        window.addEventListener("orientationChange", lazyLoad);
+    }
+};

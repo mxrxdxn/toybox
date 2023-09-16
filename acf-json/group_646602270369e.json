@@ -1,6 +1,6 @@
 {
     "key": "group_646602270369e",
-    "title": "Theme Settings: Social Media",
+    "title": "Site Settings: Social Media",
     "fields": [
         {
             "key": "field_6466024740f47",
@@ -76,7 +76,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-social-media"
+                "value": "social-media"
             }
         ]
     ],
@@ -89,5 +89,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684406964
+    "modified": 1694620887
 }

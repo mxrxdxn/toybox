@@ -1,6 +1,6 @@
 {
     "key": "group_646601a12fdee",
-    "title": "Theme Settings: Contact Information",
+    "title": "Site Settings: Contact Information",
     "fields": [
         {
             "key": "field_646601a1719ea",
@@ -67,7 +67,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "acf-options-contact"
+                "value": "contact-information"
             }
         ]
     ],
@@ -80,5 +80,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1684406778
+    "modified": 1694620876
 }
