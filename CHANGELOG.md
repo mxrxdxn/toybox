@@ -1,4 +1,7 @@
 # Toybox Changelog
+## v2.6.0 (18/09/2023)
+* Add new Device component to core.
+
 ## v2.5.0 (13/09/2023)
 * Add block render method for rendering blocks outside the block editor (and block editor-powered pages).
 * Add deprecation notice to `export:block` command.
