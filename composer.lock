@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bb57b0a3e05095926bd5a9c67e4746a",
+    "content-hash": "752e9ef526788f08c7d8007636b925fa",
     "packages": [
         {
             "name": "brick/math",
@@ -222,6 +222,72 @@
                 }
             ],
             "time": "2023-07-13T12:00:00+00:00"
+        },
+        {
+            "name": "mobiledetect/mobiledetectlib",
+            "version": "3.74.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/serbanghita/Mobile-Detect.git",
+                "reference": "d4279b39107b541a770a3b7e77abe4944785c538"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/d4279b39107b541a770a3b7e77abe4944785c538",
+                "reference": "d4279b39107b541a770a3b7e77abe4944785c538",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.14",
+                "phpunit/phpunit": "^9.6",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Detection\\": "src/",
+                    "DetectionTests\\": "tests/"
+                },
+                "classmap": [
+                    "src/MobileDetect.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Serban Ghita",
+                    "email": "serbanghita@gmail.com",
+                    "homepage": "http://mobiledetect.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
+            "homepage": "https://github.com/serbanghita/Mobile-Detect",
+            "keywords": [
+                "detect mobile devices",
+                "mobile",
+                "mobile detect",
+                "mobile detector",
+                "php mobile detect"
+            ],
+            "support": {
+                "issues": "https://github.com/serbanghita/Mobile-Detect/issues",
+                "source": "https://github.com/serbanghita/Mobile-Detect/tree/3.74.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/serbanghita",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-08-11T20:08:36+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -2390,21 +2456,22 @@
         },
         {
             "name": "toybox/core",
-            "version": "v2.5.2",
+            "version": "v2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mxrxdxn/toybox-core.git",
-                "reference": "69a62b7a7895b452671cac049cf96d702edadb88"
+                "reference": "108c06ec7dbdb5763b5346eecd30d84783d7428f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/69a62b7a7895b452671cac049cf96d702edadb88",
-                "reference": "69a62b7a7895b452671cac049cf96d702edadb88",
+                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/108c06ec7dbdb5763b5346eecd30d84783d7428f",
+                "reference": "108c06ec7dbdb5763b5346eecd30d84783d7428f",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "^2.0",
                 "filp/whoops": "^2.15",
+                "mobiledetect/mobiledetectlib": "^3.74",
                 "nesbot/carbon": "^2.70",
                 "php": "^8.1",
                 "rosell-dk/webp-convert": "^2.9",
@@ -2434,9 +2501,9 @@
             "description": "The core that drives the Toybox WordPress theme.",
             "support": {
                 "issues": "https://github.com/mxrxdxn/toybox-core/issues",
-                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.5.2"
+                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.6.0"
             },
-            "time": "2023-09-13T19:33:05+00:00"
+            "time": "2023-09-18T08:27:06+00:00"
         }
     ],
     "packages-dev": [],
