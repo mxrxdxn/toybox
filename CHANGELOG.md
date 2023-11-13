@@ -1,4 +1,12 @@
 # Toybox Changelog
+## v2.8.0 (13/11/2023)
+* Add new Archive component to core.
+* Fix image conversion command not picking up image files with capitalized extensions.
+* Add permission callback attribute to API component.
+* Fix makeResponsive method in Image component.
+* Update ACF save paths for different JSON types.
+* Populate Maps API key from ACF field.
+
 ## v2.6.0 (18/09/2023)
 * Add new Device component to core.
 

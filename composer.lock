@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "752e9ef526788f08c7d8007636b925fa",
+    "content-hash": "d884c67b48ef2746e88d5e9ef925824e",
     "packages": [
         {
             "name": "brick/math",
@@ -2456,16 +2456,16 @@
         },
         {
             "name": "toybox/core",
-            "version": "v2.6.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mxrxdxn/toybox-core.git",
-                "reference": "108c06ec7dbdb5763b5346eecd30d84783d7428f"
+                "reference": "7478dda66954381ddbabfec5883056002f8f231e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/108c06ec7dbdb5763b5346eecd30d84783d7428f",
-                "reference": "108c06ec7dbdb5763b5346eecd30d84783d7428f",
+                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/7478dda66954381ddbabfec5883056002f8f231e",
+                "reference": "7478dda66954381ddbabfec5883056002f8f231e",
                 "shasum": ""
             },
             "require": {
@@ -2501,9 +2501,9 @@
             "description": "The core that drives the Toybox WordPress theme.",
             "support": {
                 "issues": "https://github.com/mxrxdxn/toybox-core/issues",
-                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.6.0"
+                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.8.0"
             },
-            "time": "2023-09-18T08:27:06+00:00"
+            "time": "2023-11-13T13:14:50+00:00"
         }
     ],
     "packages-dev": [],
