@@ -1,6 +1,6 @@
 {
   "name": "toybox",
-  "version": "2.9.1",
+  "version": "2.9.2",
   "description": "Toybox is a simple block-based theme boilerplate for WordPress v6+ and PHP 8+.",
   "main": "index.js",
   "scripts": {
