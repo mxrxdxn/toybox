@@ -1,16 +1,16 @@
 {
-    "key": "ui_options_page_6501dbf411bf1",
-    "title": "Site Settings",
+    "key": "ui_options_page_6580650d3c348",
+    "title": "Social Media Settings",
     "active": true,
     "menu_order": 0,
-    "page_title": "Site Settings",
-    "menu_slug": "site-settings",
-    "parent_slug": "none",
+    "page_title": "Social Media Settings",
+    "menu_slug": "social-media-settings",
+    "parent_slug": "site-settings",
     "advanced_configuration": 0,
     "icon_url": "",
     "menu_title": "",
     "position": "",
-    "redirect": 0,
+    "redirect": false,
     "description": "",
     "update_button": "Update",
     "updated_message": "Options Updated",
@@ -18,5 +18,6 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1694620687
+    "_parent": 33,
+    "modified": 1702913303
 }

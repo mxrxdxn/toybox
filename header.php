@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="<?= mix("/assets/css/style.css") ?>">
     </noscript>
 
+    <?= \Toybox\Core\Components\Globals::headerCode() ?>
 </head>
 <body <?php body_class() ?>>
     <header>
