@@ -2528,16 +2528,16 @@
         },
         {
             "name": "toybox/core",
-            "version": "v2.9.2",
+            "version": "v2.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mxrxdxn/toybox-core.git",
-                "reference": "9faf51c99929ca19a97ffb8c3c6fc21cd8224a2f"
+                "reference": "dc4d00553c5fd6465dbcf12c304e92eb107e779e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/9faf51c99929ca19a97ffb8c3c6fc21cd8224a2f",
-                "reference": "9faf51c99929ca19a97ffb8c3c6fc21cd8224a2f",
+                "url": "https://api.github.com/repos/mxrxdxn/toybox-core/zipball/dc4d00553c5fd6465dbcf12c304e92eb107e779e",
+                "reference": "dc4d00553c5fd6465dbcf12c304e92eb107e779e",
                 "shasum": ""
             },
             "require": {
@@ -2573,9 +2573,9 @@
             "description": "The core that drives the Toybox WordPress theme.",
             "support": {
                 "issues": "https://github.com/mxrxdxn/toybox-core/issues",
-                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.9.2"
+                "source": "https://github.com/mxrxdxn/toybox-core/tree/v2.9.4"
             },
-            "time": "2023-12-18T15:38:12+00:00"
+            "time": "2023-12-18T16:13:52+00:00"
         }
     ],
     "packages-dev": [],
