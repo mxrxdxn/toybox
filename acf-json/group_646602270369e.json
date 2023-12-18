@@ -76,7 +76,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "social-media"
+                "value": "social-media-settings"
             }
         ]
     ],
@@ -89,5 +89,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1694620887
+    "modified": 1702914369
 }
