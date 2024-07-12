@@ -1,4 +1,11 @@
 # Toybox Changelog
+## v2.13.0 (08/07/2024)
+* Add new components to core.
+* Add new login page design.
+* Add new dashboard widget.
+* New page templates options page.
+* Misc. fixes and feedback.
+
 ## v2.8.0 (13/11/2023)
 * Add new Archive component to core.
 * Fix image conversion command not picking up image files with capitalized extensions.
