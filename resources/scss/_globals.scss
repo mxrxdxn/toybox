@@ -1,5 +1,4 @@
 body, html {
-    overflow-x: hidden; // Stops unwanted horizontal scrolling
     @include fontPx($fallbackFontStack);
 }
 
