@@ -11,7 +11,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^8.1",
-        "toybox/core": "^2.12"
+        "php": "^8.2",
+        "toybox/core": "^2.23"
     }
 }

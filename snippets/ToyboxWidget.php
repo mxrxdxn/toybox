@@ -13,6 +13,41 @@ $phpVersion       = phpversion();
 $mysqlVersion     = $wpdb->db_version();
 $wordpressVersion = $wp_version;
 
+// Sizes
+function get_database_size()
+{
+    global $wpdb;
+
+    $query = $wpdb->get_results("
+        SELECT SUM(`data_length` + `index_length`) AS \"size\" 
+          FROM `information_schema`.`TABLES` 
+         WHERE `table_schema` = \"{$wpdb->dbname}\"
+      GROUP BY `table_schema`");
+
+    return $query[0]->size;
+}
+
+function get_wp_content_size()
+{
+    $totalBytes = 0;
+    $path = realpath(WP_CONTENT_DIR);
+    if($path!==false && $path!='' && file_exists($path)){
+        foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path, FilesystemIterator::SKIP_DOTS)) as $object){
+            $totalBytes += $object->getSize();
+        }
+    }
+    return $totalBytes;
+}
+
+function bytesToHumanReadable($bytes, $decimals = 2) {
+    $size = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+    $factor = floor((strlen($bytes) - 1) / 3);
+    return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . ' ' . $size[$factor];
+}
+
+$dbSize        = bytesToHumanReadable(get_database_size());
+$wpContentSize = bytesToHumanReadable(get_wp_content_size());
+
 $content = <<<EOL
     <style>
         .toybox-widget-container ul {
@@ -78,6 +113,16 @@ $content = <<<EOL
             <li>
                 <div class="label">Document Root</div>
                 <div class="value">{$_SERVER['DOCUMENT_ROOT']}</div>
+            </li>
+            
+            <li>
+                <div class="label">Database Size</div>
+                <div class="value">{$dbSize}</div>
+            </li>
+            
+            <li>
+                <div class="label">Content Dir. Size</div>
+                <div class="value">{$wpContentSize}</div>
             </li>
         </ul>
     </div>

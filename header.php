@@ -1,11 +1,19 @@
+<?php
+
+use Toybox\Core\Components\Customizer;
+use Toybox\Core\Components\Globals;
+
+?>
+
 <!doctype html>
 <html <?php language_attributes() ?> class="no-js" lang="en-GB">
 <head>
     <meta charset="<?php bloginfo('charset') ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Theme Colour -->
-    <meta name="theme-color" content="#000">
+    <meta name="theme-color" content="<?= ! empty(Customizer::get("toybox_additional_settings_theme_color")) ? Customizer::get("toybox_additional_settings_theme_color") : "#FFF" ?>">
 
     <link rel="profile" href="https://gmpg.org/xfn/11">
 
@@ -24,7 +32,7 @@
         <link rel="stylesheet" href="<?= mix("/assets/css/style.css") ?>">
     </noscript>
 
-    <?= \Toybox\Core\Components\Globals::headerCode() ?>
+    <?= Globals::headerCode() ?>
 </head>
 <body <?php body_class() ?>>
     <header>
