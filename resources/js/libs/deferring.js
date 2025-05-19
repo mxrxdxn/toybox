@@ -153,6 +153,8 @@ const lazyLoadCSS = () => {
                     stylesheet.setAttribute('rel', 'stylesheet');
                     stylesheet.setAttribute('href', element.dataset.lazyCss)
 
+                    element.removeAttribute("data-lazy-css");
+
                     document.querySelector('head').appendChild(stylesheet);
 
                     elementObserver.unobserve(element);
@@ -160,8 +162,8 @@ const lazyLoadCSS = () => {
             });
         });
 
-        lazyLoadCSS.forEach(image => {
-            elementObserver.observe(image);
+        lazyLoadCSS.forEach(element => {
+            elementObserver.observe(element);
         });
     } else {
         let lazyLoadThrottleTimeout;
@@ -182,6 +184,8 @@ const lazyLoadCSS = () => {
 
                         stylesheet.setAttribute('rel', 'stylesheet');
                         stylesheet.setAttribute('href', element.dataset.lazyCss)
+
+                        element.removeAttribute("data-lazy-css");
 
                         document.querySelector('head').appendChild(stylesheet);
                     }
@@ -214,6 +218,7 @@ const lazyLoadJS = () => {
                     let script = document.createElement('script');
 
                     script.setAttribute('src', element.dataset.lazyJs)
+                    element.removeAttribute("data-lazy-js");
 
                     document.querySelector('head').appendChild(script);
 
@@ -222,8 +227,8 @@ const lazyLoadJS = () => {
             });
         });
 
-        lazyLoadJS.forEach(image => {
-            elementObserver.observe(image);
+        lazyLoadJS.forEach(element => {
+            elementObserver.observe(element);
         });
     } else {
         let lazyLoadThrottleTimeout;
@@ -243,6 +248,8 @@ const lazyLoadJS = () => {
                         let script = document.createElement('script');
 
                         script.setAttribute('src', element.dataset.lazyJs)
+
+                        element.removeAttribute("data-lazy-js");
 
                         document.querySelector('head').appendChild(script);
                     }
@@ -288,8 +295,8 @@ const lazyLoadAttributes = () => {
             });
         });
 
-        lazyLoadAttributes.forEach(image => {
-            elementObserver.observe(image);
+        lazyLoadAttributes.forEach(element => {
+            elementObserver.observe(element);
         });
     } else {
         let lazyLoadThrottleTimeout;
