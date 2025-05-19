@@ -56,7 +56,7 @@ Menus::set([
 // ]);
 
 // Disable the WordPress admin bar
-AdminBar::disable();
+// AdminBar::disable();
 
 // Disable emoji
 Emoji::disable();
