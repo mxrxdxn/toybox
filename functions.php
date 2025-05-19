@@ -32,28 +32,28 @@ Menus::set([
 ]);
 
 // Set custom image sizes
-Misc::setImageSizes([
-    "toybox-small" => [
-        "name"   => "Square (small)",
-        "width"  => 64,
-        "height" => 64,
-        "crop"   => true,
-    ],
-
-    "toybox-medium" => [
-        "name"   => "Square (medium)",
-        "width"  => 128,
-        "height" => 128,
-        "crop"   => true,
-    ],
-
-    "toybox-large" => [
-        "name"   => "Square (large)",
-        "width"  => 256,
-        "height" => 256,
-        "crop"   => true,
-    ],
-]);
+// Misc::setImageSizes([
+//     "toybox-small" => [
+//         "name"   => "Square (small)",
+//         "width"  => 64,
+//         "height" => 64,
+//         "crop"   => true,
+//     ],
+//
+//     "toybox-medium" => [
+//         "name"   => "Square (medium)",
+//         "width"  => 128,
+//         "height" => 128,
+//         "crop"   => true,
+//     ],
+//
+//     "toybox-large" => [
+//         "name"   => "Square (large)",
+//         "width"  => 256,
+//         "height" => 256,
+//         "crop"   => true,
+//     ],
+// ]);
 
 // Disable the WordPress admin bar
 AdminBar::disable();
