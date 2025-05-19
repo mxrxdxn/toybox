@@ -1,27 +1,49 @@
+@use "sass:list";
 @use "sass:map";
 @use "sass:math";
+@use "sass:meta";
 
 @import "~flexya/src/variables";
 @import "~flexya/src/functions";
 @import "~flexya/src/mixins";
 
-// Alias for rem()
-@function remify($size) {
-    @return rem($size);
+@function contains-space($input) {
+    @if meta.type-of($input) == "list" and list.separator($input) == space {
+        @return true;
+    }
+
+    @return false;
 }
 
-// Alias for rem()
-@function calculateRem($size) {
-    @return rem($size);
+@function is-px($value) {
+    @if meta.type-of($value) == string {
+        @return false;
+    }
+
+    @return math.unit($value) == px;
 }
 
-// Converts px values to rem
 @function rem($size) {
-    $remSize: math.div($size, 16px);
-    @return #{$remSize}rem;
+    @if contains-space($size) {
+        $props: ();
+
+        @each $s in $size {
+            @if is-px($s) {
+                $s: rem($s);
+            }
+
+            $props: list.append($props, $s);
+        }
+
+        @return $props;
+    } @else {
+        $remSize: math.div($size, 16px);
+        @return #{$remSize}rem;
+    }
 }
 
 // Fetch a color from a given map
+// Deprecated, use CSS variables instead.
 @function color($colorName, $map: "additional") {
     $innerMap: map.get($colorMap, $map);
     @return map.get($innerMap, $colorName);
