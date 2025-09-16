@@ -5,6 +5,7 @@ use Toybox\Core\Components\Comments;
 use Toybox\Core\Components\Embeds;
 use Toybox\Core\Components\Emoji;
 use Toybox\Core\Components\HTTP;
+use Toybox\Core\Components\Image;
 use Toybox\Core\Components\Menus;
 use Toybox\Core\Components\Misc;
 use Toybox\Core\Components\Settings;
@@ -77,7 +78,11 @@ XMLRPC::disable();
 Misc::addFileSupport([
     "svg"  => "image/svg+xml",
     "webp" => "image/webp",
+    "avif" => "image/avif",
 ]);
+
+// Convert images to WebP on upload
+Image::convertOnUpload("webp", 80);
 
 // Preload assets
 HTTP::preload();
