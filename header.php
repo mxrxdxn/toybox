@@ -27,9 +27,9 @@ use Toybox\Core\Components\Globals;
     */ ?>
 
     <!-- Defers load of style.css -->
-    <link rel="preload" href="<?= mix("/assets/css/style.css") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="<?= vite("resources/scss/style.scss") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="<?= mix("/assets/css/style.css") ?>">
+        <link rel="stylesheet" href="<?= vite("resources/scss/style.scss") ?>">
     </noscript>
 
     <?= Globals::headerCode() ?>
