@@ -1,0 +1,52 @@
+{
+  "_deferring-vsbnP93r.js": {
+    "file": "assets/deferring-vsbnP93r.js",
+    "name": "deferring"
+  },
+  "editor.deps.json": {
+    "file": "assets/editor.deps-BqrDAOEV.json",
+    "src": "editor.deps.json"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app-CUKB-mI5.js",
+    "name": "app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "_deferring-vsbnP93r.js"
+    ]
+  },
+  "resources/js/editor.js": {
+    "file": "assets/editor-K-bifxVc.js",
+    "name": "editor",
+    "src": "resources/js/editor.js",
+    "isEntry": true,
+    "imports": [
+      "_deferring-vsbnP93r.js"
+    ]
+  },
+  "resources/scss/critical.scss": {
+    "file": "assets/critical-BcJg11pm.css",
+    "src": "resources/scss/critical.scss",
+    "isEntry": true,
+    "names": [
+      "critical.css"
+    ]
+  },
+  "resources/scss/editor.scss": {
+    "file": "assets/editor-BsdUxf9d.css",
+    "src": "resources/scss/editor.scss",
+    "isEntry": true,
+    "names": [
+      "editor.css"
+    ]
+  },
+  "resources/scss/style.scss": {
+    "file": "assets/style-tn0RQdqM.css",
+    "src": "resources/scss/style.scss",
+    "isEntry": true,
+    "names": [
+      "style.css"
+    ]
+  }
+}
