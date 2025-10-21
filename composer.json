@@ -12,12 +12,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^8.2",
-        "toybox/core": "dev-main"
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "/Users/ronmarsden/Repos/toybox-core"
-        }
-    ]
+        "toybox/core": "^2.23"
+    }
 }

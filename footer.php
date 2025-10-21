@@ -8,7 +8,7 @@ use Toybox\Core\Components\Globals;
     </footer>
 
     <?php wp_footer() ?>
-    <script src="<?= vite('resources/js/app.js') ?>"></script>
+    <script src="<?= mix('/assets/js/app.js') ?>"></script>
 
     <?= Globals::footerCode() ?>
 </body>

@@ -88,6 +88,6 @@ Image::convertOnUpload("webp", 80);
 HTTP::preload();
 
 // Add early hints
-HTTP::hint(vite('resources/scss/critical.scss'), "rel=preload; as=style");
+HTTP::hint(mix('/assets/css/critical.css'), "rel=preload; as=style");
 
 // You're all done.

@@ -4,11 +4,11 @@
   "description": "Toybox is a simple block-based theme boilerplate for WordPress v6+ and PHP 8+.",
   "main": "index.js",
   "scripts": {
-    "build": "vite",
-    "build:prod": "vite build",
-    "dev": "vite",
-    "prod": "vite build",
-    "watch": "vite"
+    "build": "mix",
+    "build:prod": "mix --production",
+    "dev": "mix",
+    "prod": "mix --production",
+    "watch": "mix watch"
   },
   "keywords": [
     "toybox",
@@ -17,11 +17,11 @@
   "author": "Maxweb Solutions",
   "license": "MIT",
   "devDependencies": {
-    "@roots/vite-plugin": "^1.2.0",
     "flexya": "^1.10.2",
-    "laravel-vite-plugin": "^2.0.0",
+    "laravel-mix": "^6.0.49",
     "normalize.css": "^8.0.1",
-    "sass-embedded": "^1.92.1",
-    "vite": "^7.0.7"
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.87.0",
+    "sass-loader": "^12.6.0"
   }
 }
