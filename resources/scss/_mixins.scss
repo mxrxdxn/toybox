@@ -60,4 +60,397 @@
     }
 }
 
+// Get the previous breakpoint name.
+@function breakpoint-previous($name) {
+    $breakpoint-names: map.keys($breakpoints);
+    $n: index($breakpoint-names, $name);
+
+    @if not $n {
+        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+    }
+
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n - 1), null);
+}
+
+// Get the next breakpoint name.
+@function breakpoint-next($name) {
+    $breakpoint-names: map.keys($breakpoints);
+    $n: index($breakpoint-names, $name);
+
+    @if not $n {
+        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+    }
+
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// Get the min-width value for a breakpoint.
+@function breakpoint-min($name) {
+    $min: map.get(map.get($breakpoints, $name), "min-width");
+
+    @return if($min != 0, $min, null);
+}
+
+// Get the max-width value for a breakpoint.
+@function breakpoint-max($name) {
+    $max: map.get(map.get($breakpoints, $name), "min-width");
+
+    @return if($max and $max > 0, $max - .02, null);
+}
+
+// Styles in this mixin will only apply for the given breakpoint and above.
+@mixin breakpoint-up($name: "mobile", $mode: false) {
+    $min: breakpoint-min($name);
+
+    @if $min {
+        @media (min-width: $min) {
+            @if $mode == "touch" {
+                @include breakpoint-touch() {
+                    @content;
+                }
+            } @else if $mode == "notouch" {
+                @include breakpoint-notouch() {
+                    @content;
+                }
+            } @else {
+                @content;
+            }
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Styles in this mixin will only apply for the given breakpoint and below.
+@mixin breakpoint-down($name: "large-desktop", $mode: false) {
+    $max: breakpoint-max($name);
+
+    @if $max {
+        @media (max-width: $max) {
+            @if $mode == "touch" {
+                @include breakpoint-touch() {
+                    @content;
+                }
+            } @else if $mode == "notouch" {
+                @include breakpoint-notouch() {
+                    @content;
+                }
+            } @else {
+                @content;
+            }
+        }
+    } @else {
+        @content;
+    }
+}
+
+// Styles in this mixin will only apply for the given breakpoint.
+@mixin breakpoint-only($name: "mobile", $mode: false) {
+    $min:  breakpoint-min($name);
+    $next: breakpoint-next($name);
+    $max:  breakpoint-max($next);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @if $mode == "touch" {
+                @include breakpoint-touch() {
+                    @content;
+                }
+            } @else if $mode == "notouch" {
+                @include breakpoint-notouch() {
+                    @content;
+                }
+            } @else {
+                @content;
+            }
+        }
+    } @else if $max == null {
+        @include breakpoint-up($name, $mode) {
+            @content;
+        }
+    } @else if $min == null {
+        @include breakpoint-down($next, $mode) {
+            @content;
+        }
+    }
+}
+
+// Styles in this mixin will only apply between the given lower and upper breakpoints.
+@mixin breakpoint-between($lower, $upper, $mode: false) {
+    $min: breakpoint-min($lower);
+    $max: breakpoint-max($upper);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @if $mode == "touch" {
+                @include breakpoint-touch() {
+                    @content;
+                }
+            } @else if $mode == "notouch" {
+                @include breakpoint-notouch() {
+                    @content;
+                }
+            } @else {
+                @content;
+            }
+        }
+    } @else if $max == null {
+        @include breakpoint-up($lower, $mode) {
+            @content;
+        }
+    } @else if $min == null {
+        @include breakpoint-down($upper, $mode) {
+            @content;
+        }
+    }
+}
+
+// Only touch capable devices
+@mixin breakpoint-touch() {
+    @media (hover: none) and (pointer: coarse) {
+        @content;
+    }
+}
+
+// Only non-touch capable devices
+@mixin breakpoint-notouch() {
+    @media (hover: hover) and (pointer: fine) {
+        @content;
+    }
+}
+
+// Light colour scheme support
+@mixin light-mode() {
+    @media (prefers-color-scheme: light) {
+        @content;
+    }
+}
+
+// Dark colour scheme support
+@mixin dark-mode() {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}
+
+// High contrast mode support
+@mixin high-contrast() {
+    @media screen and (-ms-high-contrast: active), (forced-colors: active) {
+        @content;
+    }
+}
+
+// Reduced motion
+@mixin reduced-motion() {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}
+
+// Low battery mode
+@mixin low-battery() {
+    @media (prefers-reduced-motion: reduce) and (color-gamut: srgb) {
+        @content;
+    }
+}
+
+// Reduced data - coming in CSS Media Queries Level 4
+@mixin reduced-data() {
+    @media (prefers-reduced-data: slow) {
+        @content;
+    }
+}
+
+// Light level - coming in CSS Media Queries Level 5
+// Supported values: dim, normal, washed
+@mixin light-level($strength: normal) {
+    @if map.has-key((dim: dim, normal: normal, washed: washed), $strength) == false {
+        @error "Invalid property value for light-level. Supported values \"dim\", \"normal\", \"washed\".";
+    }
+
+    @media (light-level: $strength) {
+        @content;
+    }
+}
+
+// Generate column classes for the flex grid
+@mixin generate-column-classes($options) {
+    $prefix: map.get($options, "prefix");
+
+    @if $prefix == false {
+        $prefix: "";
+    } @else {
+        $prefix: "-#{$prefix}";
+    }
+
+    // Auto column
+    .#{$columnClass}#{$prefix} {
+        flex: 1 0 0%;
+    }
+
+    // Auto-size column
+    .#{$columnClass}#{$prefix}-auto {
+        flex:  0 0 auto;
+        width: auto;
+    }
+
+    // Sized columns
+    @for $i from 0 through $columnCount {
+        $width: math.div(100%, $columnCount) * $i;
+
+        @if $i > 0 {
+            .#{$columnClass}#{$prefix}-#{$i} {
+                flex:  0 0 auto;
+                width: $width;
+            }
+        }
+
+        @if $i == 0 {
+            .#{$offsetClass}#{$prefix}-#{$i} {
+                margin-left: unset;
+            }
+        } @else {
+            .#{$offsetClass}#{$prefix}-#{$i} {
+                margin-left: $width;
+            }
+        }
+    }
+}
+
+// Generate column classes for the CSS grid
+@mixin generate-grid-column-classes($options) {
+    $prefix: map.get($options, "prefix");
+
+    @if $prefix == false {
+        $prefix: "";
+    } @else {
+        $prefix: "-#{$prefix}";
+    }
+
+    // Sized columns
+    @for $i from 1 through $columnCount {
+        $width: math.div(100%, $columnCount) * $i;
+
+        .#{$columnClass}#{$prefix}-#{$i} {
+            grid-column: span #{$i};
+        }
+    }
+}
+
+// Generate order classes
+@mixin generate-order-classes($options) {
+    $prefix: map.get($options, "prefix");
+
+    @if $prefix == false {
+        $prefix: "";
+    } @else {
+        $prefix: "-#{$prefix}";
+    }
+
+    // Orders
+    @for $i from 1 through $columnCount {
+        $width: math.div(100%, $columnCount) * $i;
+
+        .#{$orderClass}#{$prefix}-#{$i} {
+            order: $i;
+        }
+    }
+}
+
+// Generate a row for the flex grid
+@mixin flex-row() {
+    position:       relative;
+    display:        flex;
+    flex-direction: row;
+    flex-wrap:      wrap;
+
+    // Gutters
+    margin: {
+        left:  calc(-.5 * $gutterWidth);
+        right: calc(-.5 * $gutterWidth);
+    }
+
+    > *[class*='#{$columnClass}'] {
+        padding: {
+            left:  calc(.5 * $gutterWidth);
+            right: calc(.5 * $gutterWidth);
+        }
+    }
+
+    &.no-row-gutters {
+        margin: {
+            left:  0;
+            right: 0;
+        }
+    }
+
+    &.no-col-gutters {
+        > *[class*='#{$columnClass}'] {
+            padding: {
+                left:  0;
+                right: 0;
+            }
+        }
+    }
+
+    // Columns
+    @each $size, $options in $breakpoints {
+        @if map.get($options, "min-width") == 0 {
+            @include generate-column-classes($options)
+        } @else {
+            // Include the breakpoint check
+            @include breakpoint-up($size) {
+                @include generate-column-classes($options)
+            }
+        }
+    }
+}
+
+// Generate a row for the CSS grid
+@mixin grid-row() {
+    display:               grid;
+    grid-template-columns: repeat($columnCount, minmax(0, 1fr));
+
+    // Gutters
+    margin: {
+        left:  calc(-.5 * $gutterWidth);
+        right: calc(-.5 * $gutterWidth);
+    }
+
+    > *[class*='#{$columnClass}'] {
+        padding: {
+            left:  calc(.5 * $gutterWidth);
+            right: calc(.5 * $gutterWidth);
+        }
+    }
+
+    &.no-row-gutters {
+        margin: {
+            left:  0;
+            right: 0;
+        }
+    }
+
+    &.no-col-gutters {
+        > *[class*='#{$columnClass}'] {
+            padding: {
+                left:  0;
+                right: 0;
+            }
+        }
+    }
+
+    // Columns
+    @each $size, $options in $breakpoints {
+        @if map.get($options, "min-width") == 0 {
+            @include generate-grid-column-classes($options)
+        } @else {
+            // Include the breakpoint check
+            @include breakpoint-up($size) {
+                @include generate-grid-column-classes($options)
+            }
+        }
+    }
+}
+
 // Custom mixins can be added below here.
