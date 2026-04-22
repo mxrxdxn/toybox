@@ -1,10 +1,10 @@
 <?php
 
+use Toybox\Core\Components\Assets;
 use Toybox\Core\Components\Customizer;
-use Toybox\Core\Components\Globals;
+use Toybox\Core\Components\Header;
 
 ?>
-
 <!doctype html>
 <html <?php language_attributes() ?> class="no-js" lang="en-GB">
 <head>
@@ -27,12 +27,12 @@ use Toybox\Core\Components\Globals;
     */ ?>
 
     <!-- Defers load of style.css -->
-    <link rel="preload" href="<?= mix("/assets/css/style.css") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="<?= Assets::getPath("resources/scss/style.scss") ?>" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
-        <link rel="stylesheet" href="<?= mix("/assets/css/style.css") ?>">
+        <link rel="stylesheet" href="<?= Assets::getPath("resources/scss/style.scss") ?>">
     </noscript>
 
-    <?= Globals::headerCode() ?>
+    <?= Header::code() ?>
 </head>
 <body <?php body_class() ?>>
     <header>

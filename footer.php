@@ -1,6 +1,7 @@
 <?php
 
-use Toybox\Core\Components\Globals;
+use Toybox\Core\Components\Assets;
+use Toybox\Core\Components\Footer;
 
 ?>
     <footer>
@@ -8,8 +9,8 @@ use Toybox\Core\Components\Globals;
     </footer>
 
     <?php wp_footer() ?>
-    <script src="<?= mix('/assets/js/app.js') ?>"></script>
+    <script src="<?= Assets::getPath("/resources/js/app.js") ?>" type="module"></script>
 
-    <?= Globals::footerCode() ?>
+    <?= Footer::code() ?>
 </body>
 </html>
