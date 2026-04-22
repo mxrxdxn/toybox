@@ -24,39 +24,36 @@ To compile a production build, run `npm run build:prod`. This will minify all ou
 
 To run the watcher script to recompile assets when their contents change, run `npm run watch`.
 
-## Deferred Loading
+## Lazy Loading
 Toybox includes built-in deferring systems to increase performance.
-### Defer Images
-To defer load images, swap the `src` attribute on an `img` element with `data-lazy`:
+### Lazy Load Images
+To lazy load images, swap the `src` attribute on an `img` element with `data-lazy`:
 ```html
 <img data-lazy="/path/to/image.jpg">
 ```
 
-### Defer Background Images
-To defer load background images, add the background image URL to the `data-lazy` attribute of any non-`img` element:
+### Lazy Load Background Images
+To lazy load background images, add the background image URL to the `data-lazy` attribute of any non-`img` element:
 ```html
 <div data-lazy="/path/to/image.jpg">
     Content
 </div>
 ```
 
-### Defer CSS
-To defer load CSS, add the stylesheet's URL to the `data-lazy-css` attribute of any element:
+### Lazy Load CSS
+To lazy load CSS, add the stylesheet's URL to the `data-lazy-css` attribute of any element:
 ```html
 <div data-lazy-css="/path/to/stylesheet.css"></div>
 ```
 
-### Defer JS
-To defer load JS, add the script's URL to the `data-lazy-js` attribute of any element:
+### Lazy Load JS
+To lazy load JS, add the script's URL to the `data-lazy-js` attribute of any element:
 ```html
 <div data-lazy-js="/path/to/script.js"></div>
 ```
 
 ## Helpers
 Toybox ships with some theme-wide helper functions:
-
-### `mix(string $fileName, string|null $manifestPath = null)`
-The `mix()` function retrieves the path to a given CSS/JS file, relative to the base directory of the theme. This includes any cachebuster strings added by Mix.
 
 ### `uri(string $fileName)`
 The `uri()` function fetches the path to a given file, relative to the base directory of the theme.
@@ -124,18 +121,6 @@ php toybox make:shortcode "My Shortcode" --with-styles --with-js
 | --with-js       |                | No       | Creates the shortcode script (and directory if required). |
 
 This will create your shortcode under the `/shortcodes` directory.
-
-### Make Post Type
-You can create a post type with the `make:post-type` command.
-```bash
-php toybox make:post-type "Services"
-```
-
-| Argument/Option | Example        | Required | Description                 |
-|-----------------|----------------|----------|-----------------------------|
-| Post Type Name  | "My Post Type" | Yes      | The name of your post type. |
-
-This will create your post type under the `/post-types
 
 ### WebP Conversion
 You can convert a single image, or a path containing images to WebP format with the `images:convert` command.
