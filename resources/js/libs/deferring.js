@@ -220,7 +220,7 @@ const lazyLoadJS = () => {
                     script.setAttribute('src', element.dataset.lazyJs)
                     element.removeAttribute("data-lazy-js");
 
-                    document.querySelector('head').appendChild(script);
+                    document.querySelector('body').appendChild(script);
 
                     elementObserver.unobserve(element);
                 }
@@ -251,7 +251,7 @@ const lazyLoadJS = () => {
 
                         element.removeAttribute("data-lazy-js");
 
-                        document.querySelector('head').appendChild(script);
+                        document.querySelector('body').appendChild(script);
                     }
                 });
 
