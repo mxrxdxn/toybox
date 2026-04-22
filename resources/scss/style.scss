@@ -1,6 +1,6 @@
 // This file is only for non-critical styles
-@import "variables";
-@import "mixins";
+@use "variables";
+@use "mixins";
 
 // Add your partials below here
-@import "partials/footer";
+@use "partials/footer";

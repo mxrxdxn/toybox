@@ -1,11 +1,9 @@
+@use "variables";
+
 @use "sass:list";
 @use "sass:map";
 @use "sass:math";
 @use "sass:meta";
-
-@import "~flexya/src/variables";
-@import "~flexya/src/functions";
-@import "~flexya/src/mixins";
 
 @function contains-space($input) {
     @if meta.type-of($input) == "list" and list.separator($input) == space {
@@ -45,12 +43,12 @@
 // Fetch a color from a given map
 // Deprecated, use CSS variables instead.
 @function color($colorName, $map: "additional") {
-    $innerMap: map.get($colorMap, $map);
+    $innerMap: map.get(variables.$colorMap, $map);
     @return map.get($innerMap, $colorName);
 }
 
 // Set the font properties - family, size, line height and weight
-@mixin fontPx($family: $defaultFontStack, $size: 16px, $lineHeight: 24px, $weight: 400) {
+@mixin fontPx($family: variables.$defaultFontStack, $size: 16px, $lineHeight: 24px, $weight: 400) {
     line-height: rem($lineHeight);
 
     font: {
@@ -62,38 +60,38 @@
 
 // Get the previous breakpoint name.
 @function breakpoint-previous($name) {
-    $breakpoint-names: map.keys($breakpoints);
-    $n: index($breakpoint-names, $name);
+    $breakpoint-names: map.keys(variables.$breakpoints);
+    $n: list.index($breakpoint-names, $name);
 
     @if not $n {
-        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+        @error "breakpoint `#{$name}` not found in `#{variables.$breakpoints}`";
     }
 
-    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n - 1), null);
+    @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n - 1), null);
 }
 
 // Get the next breakpoint name.
 @function breakpoint-next($name) {
-    $breakpoint-names: map.keys($breakpoints);
-    $n: index($breakpoint-names, $name);
+    $breakpoint-names: map.keys(variables.$breakpoints);
+    $n: list.index($breakpoint-names, $name);
 
     @if not $n {
-        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+        @error "breakpoint `#{$name}` not found in `#{variables.$breakpoints}`";
     }
 
-    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+    @return if($n < list.length($breakpoint-names), list.nth($breakpoint-names, $n + 1), null);
 }
 
 // Get the min-width value for a breakpoint.
 @function breakpoint-min($name) {
-    $min: map.get(map.get($breakpoints, $name), "min-width");
+    $min: map.get(map.get(variables.$breakpoints, $name), "min-width");
 
     @return if($min != 0, $min, null);
 }
 
 // Get the max-width value for a breakpoint.
 @function breakpoint-max($name) {
-    $max: map.get(map.get($breakpoints, $name), "min-width");
+    $max: map.get(map.get(variables.$breakpoints, $name), "min-width");
 
     @return if($max and $max > 0, $max - .02, null);
 }
@@ -270,186 +268,6 @@
 
     @media (light-level: $strength) {
         @content;
-    }
-}
-
-// Generate column classes for the flex grid
-@mixin generate-column-classes($options) {
-    $prefix: map.get($options, "prefix");
-
-    @if $prefix == false {
-        $prefix: "";
-    } @else {
-        $prefix: "-#{$prefix}";
-    }
-
-    // Auto column
-    .#{$columnClass}#{$prefix} {
-        flex: 1 0 0%;
-    }
-
-    // Auto-size column
-    .#{$columnClass}#{$prefix}-auto {
-        flex:  0 0 auto;
-        width: auto;
-    }
-
-    // Sized columns
-    @for $i from 0 through $columnCount {
-        $width: math.div(100%, $columnCount) * $i;
-
-        @if $i > 0 {
-            .#{$columnClass}#{$prefix}-#{$i} {
-                flex:  0 0 auto;
-                width: $width;
-            }
-        }
-
-        @if $i == 0 {
-            .#{$offsetClass}#{$prefix}-#{$i} {
-                margin-left: unset;
-            }
-        } @else {
-            .#{$offsetClass}#{$prefix}-#{$i} {
-                margin-left: $width;
-            }
-        }
-    }
-}
-
-// Generate column classes for the CSS grid
-@mixin generate-grid-column-classes($options) {
-    $prefix: map.get($options, "prefix");
-
-    @if $prefix == false {
-        $prefix: "";
-    } @else {
-        $prefix: "-#{$prefix}";
-    }
-
-    // Sized columns
-    @for $i from 1 through $columnCount {
-        $width: math.div(100%, $columnCount) * $i;
-
-        .#{$columnClass}#{$prefix}-#{$i} {
-            grid-column: span #{$i};
-        }
-    }
-}
-
-// Generate order classes
-@mixin generate-order-classes($options) {
-    $prefix: map.get($options, "prefix");
-
-    @if $prefix == false {
-        $prefix: "";
-    } @else {
-        $prefix: "-#{$prefix}";
-    }
-
-    // Orders
-    @for $i from 1 through $columnCount {
-        $width: math.div(100%, $columnCount) * $i;
-
-        .#{$orderClass}#{$prefix}-#{$i} {
-            order: $i;
-        }
-    }
-}
-
-// Generate a row for the flex grid
-@mixin flex-row() {
-    position:       relative;
-    display:        flex;
-    flex-direction: row;
-    flex-wrap:      wrap;
-
-    // Gutters
-    margin: {
-        left:  calc(-.5 * $gutterWidth);
-        right: calc(-.5 * $gutterWidth);
-    }
-
-    > *[class*='#{$columnClass}'] {
-        padding: {
-            left:  calc(.5 * $gutterWidth);
-            right: calc(.5 * $gutterWidth);
-        }
-    }
-
-    &.no-row-gutters {
-        margin: {
-            left:  0;
-            right: 0;
-        }
-    }
-
-    &.no-col-gutters {
-        > *[class*='#{$columnClass}'] {
-            padding: {
-                left:  0;
-                right: 0;
-            }
-        }
-    }
-
-    // Columns
-    @each $size, $options in $breakpoints {
-        @if map.get($options, "min-width") == 0 {
-            @include generate-column-classes($options)
-        } @else {
-            // Include the breakpoint check
-            @include breakpoint-up($size) {
-                @include generate-column-classes($options)
-            }
-        }
-    }
-}
-
-// Generate a row for the CSS grid
-@mixin grid-row() {
-    display:               grid;
-    grid-template-columns: repeat($columnCount, minmax(0, 1fr));
-
-    // Gutters
-    margin: {
-        left:  calc(-.5 * $gutterWidth);
-        right: calc(-.5 * $gutterWidth);
-    }
-
-    > *[class*='#{$columnClass}'] {
-        padding: {
-            left:  calc(.5 * $gutterWidth);
-            right: calc(.5 * $gutterWidth);
-        }
-    }
-
-    &.no-row-gutters {
-        margin: {
-            left:  0;
-            right: 0;
-        }
-    }
-
-    &.no-col-gutters {
-        > *[class*='#{$columnClass}'] {
-            padding: {
-                left:  0;
-                right: 0;
-            }
-        }
-    }
-
-    // Columns
-    @each $size, $options in $breakpoints {
-        @if map.get($options, "min-width") == 0 {
-            @include generate-grid-column-classes($options)
-        } @else {
-            // Include the breakpoint check
-            @include breakpoint-up($size) {
-                @include generate-grid-column-classes($options)
-            }
-        }
     }
 }
 

@@ -1,10 +1,10 @@
 // This file is for critical-only styles
-@import "variables";
-@import "mixins";
-@import "fonts";
-@import "~normalize.css/normalize.css";
-@import "~flexya/src/flexya";
-@import "globals";
+@use "sass:meta";
+@use "variables";
+@use "mixins";
+@use "fonts";
+@import "normalize.css/normalize.css";
+@include meta.load-css("globals");
 
 // Add your partials below here
-@import "partials/header";
+@include meta.load-css("partials/header");

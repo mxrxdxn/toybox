@@ -1,5 +1,8 @@
+@use "mixins";
+@use "variables";
+
 body, html {
-    @include fontPx($fallbackFontStack);
+    @include mixins.fontPx(variables.$fallbackFontStack);
 }
 
 * {
