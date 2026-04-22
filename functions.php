@@ -1,16 +1,6 @@
 <?php
 
-use Toybox\Core\Components\AdminBar;
-use Toybox\Core\Components\Comments;
-use Toybox\Core\Components\Embeds;
-use Toybox\Core\Components\Emoji;
-use Toybox\Core\Components\HTTP;
-use Toybox\Core\Components\Image;
 use Toybox\Core\Components\Menus;
-use Toybox\Core\Components\Misc;
-use Toybox\Core\Components\Settings;
-use Toybox\Core\Components\Visitor;
-use Toybox\Core\Components\XMLRPC;
 use Toybox\Core\Debug\ErrorHandler;
 use Toybox\Core\Theme;
 
@@ -32,62 +22,7 @@ Menus::set([
     'footer_nav' => __("Footer Navigation", "toybox"),
 ]);
 
-// Set custom image sizes
-// Misc::setImageSizes([
-//     "toybox-small" => [
-//         "name"   => "Square (small)",
-//         "width"  => 64,
-//         "height" => 64,
-//         "crop"   => true,
-//     ],
-//
-//     "toybox-medium" => [
-//         "name"   => "Square (medium)",
-//         "width"  => 128,
-//         "height" => 128,
-//         "crop"   => true,
-//     ],
-//
-//     "toybox-large" => [
-//         "name"   => "Square (large)",
-//         "width"  => 256,
-//         "height" => 256,
-//         "crop"   => true,
-//     ],
-// ]);
-
-// Disable the WordPress admin bar
-// AdminBar::disable();
-
-// Disable emoji
-Emoji::disable();
-
-// Disable embeds
-Embeds::disable();
-
-// Disable comments
-Comments::disable();
-
-// Stop WordPress auto-changing "Wordpress" to "WordPress".
-Misc::disableCapitalPDangit();
-
-// Disable XMLRPC.
-XMLRPC::disable();
-
-// Adds support for additional file types
-Misc::addFileSupport([
-    "svg"  => "image/svg+xml",
-    "webp" => "image/webp",
-    "avif" => "image/avif",
-]);
-
-// Convert images to WebP on upload
-Image::convertOnUpload("webp", 80);
-
-// Preload assets
-HTTP::preload();
-
-// Add early hints
-HTTP::hint(mix('/assets/css/critical.css'), "rel=preload; as=style");
+// Set default theme settings
+Theme::safeDefaults();
 
 // You're all done.
