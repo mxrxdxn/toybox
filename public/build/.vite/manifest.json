@@ -1,0 +1,160 @@
+{
+  "resources/js/app.js": {
+    "file": "js/resources-js-app-DezA9VHm.js",
+    "name": "resources-js-app",
+    "src": "resources/js/app.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/deferring.js",
+      "resources/js/libs/deferring.js"
+    ]
+  },
+  "resources/js/editor.js": {
+    "file": "js/resources-js-editor-CKjHY-tf.js",
+    "name": "resources-js-editor",
+    "src": "resources/js/editor.js",
+    "isEntry": true,
+    "imports": [
+      "resources/js/libs/deferring.js",
+      "resources/js/libs/deferring.js"
+    ]
+  },
+  "resources/js/libs/deferring.js": {
+    "file": "js/resources-js-libs-deferring-CIUjTRux.js",
+    "name": "resources-js-libs-deferring",
+    "src": "resources/js/libs/deferring.js",
+    "isEntry": true
+  },
+  "resources/scss/_fonts.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/_globals.scss": {
+    "file": "assets/resources-scss-_globals-hZMu6TK0.css",
+    "name": "resources-scss-_globals",
+    "names": [
+      "resources-scss-_globals.css"
+    ],
+    "src": "resources/scss/_globals.scss",
+    "isEntry": true
+  },
+  "resources/scss/_grid.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/_mixins.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/_variables.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/critical.scss": {
+    "file": "assets/resources-scss-critical-BcGpWySD.css",
+    "name": "resources-scss-critical",
+    "names": [
+      "resources-scss-critical.css"
+    ],
+    "src": "resources/scss/critical.scss",
+    "isEntry": true
+  },
+  "resources/scss/editor.scss": {
+    "file": "assets/resources-scss-editor-CB_TUOn_.css",
+    "name": "resources-scss-editor",
+    "names": [
+      "resources-scss-editor.css"
+    ],
+    "src": "resources/scss/editor.scss",
+    "isEntry": true
+  },
+  "resources/scss/partials/_footer.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/partials/_header.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  },
+  "resources/scss/style.scss": {
+    "file": "assets/resources-scss-_fonts-x1XGuNl0.css",
+    "name": "resources-scss-_fonts",
+    "names": [
+      "resources-scss-_grid.css",
+      "resources-scss-style.css",
+      "resources-scss-_fonts.css",
+      "resources-scss-_mixins.css",
+      "resources-scss-_variables.css",
+      "resources-scss-partials-_footer.css",
+      "resources-scss-partials-_header.css"
+    ],
+    "src": "resources/scss/_fonts.scss",
+    "isEntry": true
+  }
+}
