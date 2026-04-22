@@ -13,4 +13,4 @@ if (! defined("TOYBOX_DIR")) {
 
 require_once(__DIR__ . "/vendor/autoload.php");
 
-(new Kernel())->run();
+new Kernel()->run();
