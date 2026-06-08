@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "js/resources-js-app-DezA9VHm.js",
+    "file": "js/resources-js-app-C2PV0zQL.js",
     "name": "resources-js-app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -10,7 +10,7 @@
     ]
   },
   "resources/js/editor.js": {
-    "file": "js/resources-js-editor-CKjHY-tf.js",
+    "file": "js/resources-js-editor-DgLliJtA.js",
     "name": "resources-js-editor",
     "src": "resources/js/editor.js",
     "isEntry": true,
@@ -20,7 +20,7 @@
     ]
   },
   "resources/js/libs/deferring.js": {
-    "file": "js/resources-js-libs-deferring-CIUjTRux.js",
+    "file": "js/resources-js-libs-deferring-BxJzsftJ.js",
     "name": "resources-js-libs-deferring",
     "src": "resources/js/libs/deferring.js",
     "isEntry": true
